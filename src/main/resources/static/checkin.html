@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="telephone=no" name="format-detection">
+<meta content="no-cache" http-equiv="Cache-Control">
+<title>上品折扣微商城</title>
+<link href="css/shopin.css" rel="stylesheet"/>
+</head>
+
+<body>
+<div class="header fixed-bar">
+	<div class="left"><a href="javascript:;" class="a-back"><span>返回</span></a></div>
+	<div class="center">
+		<h1>签到记录</h1>
+	</div>
+</div><!--//头部结束-->
+
+<div class="content">
+	<div class="m-checkin mt">
+		<div class="tt tc" date="1">2015年2月</div>
+		<div class="ct">
+			<ul id="date">
+				<li date-day="1">1<i>已签到</i></li>
+				<li date-day="2">2<i>已签到</i></li>
+				<li date-day="3">3<i>已签到</i></li>
+				<li date-day="4">4<i>已签到</i></li>
+				<li date-day="5">5<i>已签到</i></li>
+				<li date-day="6">6<i>已签到</i></li>
+				<li date-day="7">7<i>已签到</i></li>
+				<li date-day="8">8<i>已签到</i></li>
+				<li date-day="9">9<i>已签到</i></li>
+				<li date-day="10">10<i>已签到</i></li>
+				<li date-day="11">11<i>已签到</i></li>
+				<li date-day="12">12<i>已签到</i></li>
+				<li date-day="13">13<i>已签到</i></li>
+				<li date-day="14">14<i>已签到</i></li>
+				<li date-day="15">15<i>已签到</i></li>
+				<li date-day="16">16<i>已签到</i></li>
+				<li date-day="17">17<i>已签到</i></li>
+				<li date-day="18">18<i>已签到</i></li>
+				<li date-day="19">19<i>已签到</i></li>
+				<li date-day="20">20<i>已签到</i></li>
+				<li date-day="21">21<i>已签到</i></li>
+				<li date-day="22">22<i>已签到</i></li>
+				<li date-day="23">23<i>已签到</i></li>
+				<li date-day="24">24<i>已签到</i></li>
+				<li date-day="25">25<i>已签到</i></li>
+				<li date-day="26">26<s></s></li>
+				<li date-day="27">27</li>
+				<li date-day="28">28</li>
+				<li date-day="29">29</li>
+				<li date-day="30">30</li>
+				<li date-day="31">31</li>
+			</ul>
+		</div>
+	</div><!-- //每日签到 -->
+	<div class="btn-box">
+		<a href="javascript:;" class="btn btn-block btn-submit btnCheckin">我要签到</a>
+	</div>
+	<div class="checkin-rule">
+		<p><strong>1.</strong>连续签到1天，送1积分；连续签到2天，送2积分；连续签到3天，送3积分；连续签到超过3天，每天均送3积分。</p>
+	    <p><strong>2.</strong>连续签到中断，下次签到积分从初始起送。</p>
+	    <p><strong>3.</strong>每个账户每天限签到一次。</p>
+	    <p><strong>4.</strong>在法律允许的范围内上品折扣拥有解释权。</p>
+	</div>
+</div>
+<script src="js/zepto.min.js"></script>
+<script src="js/shopin.js"></script>
+<script>
+$('.btnCheckin').on('tap', function() {
+	var day = new Date().getDay();
+	$(this).addClass('disabled').text('已签到' + day + '天')
+});
+</script>
+</body>
+</html>

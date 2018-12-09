@@ -1,0 +1,342 @@
+<!DOCTYPE html> 
+<html> 
+<head lang="en"> 
+<meta charset="UTF-8"> 
+<title>搜索</title> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"> 
+<meta name="apple-mobile-web-app-capable" content="no"> 
+<meta name="apple-mobile-web-app-status-bar-style" content="black"> 
+<meta name="format-detection" content="telephone=no"> 
+<link rel="stylesheet" href="css/weui.css"/>
+<link rel="stylesheet" href="css/weui2.css"/>
+<style> 
+.header { 
+	position: fixed;
+	z-index: 100;
+	top: 10px; 
+	height: 30px;
+	left: 0px;
+	width:100%;
+}
+.center{
+	width: 96%;
+	height: 30px;
+	margin: 0 auto;
+}
+.left{
+	height: 30px;
+	width: 6%;
+	float: left;
+	margin-left: 5px;
+	margin-top: 2px;
+}
+.left1{
+	height: 30px;
+	width: 14%;
+	float: left;
+	border-top-left-radius:8px; 
+	border-bottom-left-radius:8px;
+}
+.search{
+	height: 30px;
+	width: 75%;
+	float: left;
+}
+.s-btn{
+	height: 30px;
+	width: 10%;
+	background-color: #EEEEEE;
+	float: right;
+	text-align:center;
+	margin-bottom: 2px;
+	border-top-right-radius: 8px; 
+	border-bottom-right-radius:8px;
+	line-height: 30px;
+}
+#selectshop{
+	width: 60px;
+	height: 30px;
+	font-size: 10px;
+	color: orange;
+	border-top-left-radius:8px; 
+	border-bottom-left-radius:8px;
+}
+#idNumber1{ 
+	 /*清除select默认样式*/
+    appearance:none;
+    -moz-appearance:none;
+    -webkit-appearance:none;
+    -ms-appearance:none;
+    outline:0;
+    border-radius:0px;
+	width:90%; 
+	overflow:hidden; 
+	text-align:left; 
+	height:30px; 
+	border:0px  #ccc; 
+	float: left;
+	border-bottom: 1px solid #ccc;
+	border-top: 1px solid #ccc;
+} 
+.delete{
+	margin-top: 10px;
+}
+.delete:after{ 
+	clear:both;content:'.'; 
+	display:block; 
+	width: 0; 
+	height: 0; 
+	visibility:hidden; 
+} 
+.delete>div { 
+	border-radius: 8px; 
+	float: left; 
+	border: 1px solid #ccc; 
+	background: #E0E0E0; 
+	text-align: center;
+	margin-left: 10px;
+	margin-top: 5px;
+	font-size: 13px;
+	padding-left: 5px;
+	padding-right: 5px;
+} 
+
+#his-dele{ 
+	width: 30px; 
+	height: 30px; 
+	background: #E0E0E0; 
+	border-radius: 50%; 
+	text-align: center; 
+	float: right;
+	margin-right: 5px;
+}
+#historyp{
+	margin-top: 60px;
+	width: 100%;
+	height: 30px;
+}
+#historyp p{
+	float: left;
+	margin-left: 5px;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+#hot{
+	margin-top: 60px;
+	width: 100%;
+	height: 30px;
+}
+#hot p{
+	float: left;
+	margin-left: 5px;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+#hotdiv>div{
+	border-radius: 8px; 
+	float: left; 
+	border: 1px solid #ccc; 
+	background: #E0E0E0; 
+	text-align: center;
+	margin-left: 10px;
+	margin-top: 5px;
+	font-size: 13px;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+ select {
+    /*清除select默认样式*/
+    appearance:none;
+    -moz-appearance:none;
+    -webkit-appearance:none;
+    -ms-appearance:none;
+
+    border:1px solid #CCC;
+    width:330px;
+    height:44px;
+    /*自定义箭头的样式，记得背景一定要加 白色或其他*/
+    /*background:url("../img/select.png") no-repeat scroll right center #fff;*/
+    /*ie下,原默认的箭头样式还是会显示，所以这里把自定义的样式给去除了*/
+    background:#fff\9;
+    color:#666;
+    padding:8px;
+    outline:none;
+    line-height: 14px;
+}
+</style> 
+</head> 
+<body> 
+	<div class="header">
+	<div class="center">
+		<a href="index.html" >
+			<div class="left">
+				<i class="iconfont">&#xe601;</i>
+			</div>
+		</a>
+		<div class="left1">
+			<select name="shop" id="selectshop">
+				<option value="pinduoduo">拼多多</option>
+			</select>
+		</div>
+		<div class="search">
+			<form  id="form1" >
+				<input  type="search" id="idNumber1" autocomplete="off" placeholder="粘贴宝贝标题 先领券再购物哦" autosave="unique">
+				<i class="iconfont s-btn" id="search">&#xe640;</i></button> 
+			</form>
+			
+			
+		</div>
+	</div>
+</div><!--//头部结束-->
+	
+<div id="hot">
+	<p>热门标签</p>
+	<br />
+</div>
+<div id="hotdiv"> 
+	<div>面膜</div>
+	<div>卫衣 女</div>
+	<div>手撕面包</div>
+</div> 
+
+
+<div id="historyp">
+	<p>最近搜索</p>
+	<div class="iconfont s-btn" id="his-dele">&#xe60c;</div> 
+</div>
+<div class="delete history"> 
+</div> 
+
+
+
+<!--清空历史记录--> 
+
+<script src="js/jquery-3.1.0.min.js"></script>
+<script> 
+	$(document).delegate(".delete>div","click",function(){ 
+		$("#idNumber1").val($(this).text()); 
+	}); 
+	
+	/*搜索记录相关*/ 
+	//从localStorage获取搜索时间的数组 
+	var hisTime; 
+	//从localStorage获取搜索内容的数组 
+	var hisItem; 
+	//从localStorage获取最早的1个搜索时间 
+	var firstKey; 
+	function init (){ 
+	//每次执行都把2个数组置空 
+	hisTime = []; 
+	hisItem = []; 
+	//模拟localStorage本来有的记录 
+	//localStorage.setItem("a",12333); 
+	//本函数内的两个for循环用到的变量 
+	var i=0 
+	for(;i<localStorage.length;i++){ 
+		if(!isNaN(localStorage.key(i))){ 
+			hisItem.push(localStorage.getItem(localStorage.key(i))); 
+			hisTime.push(localStorage.key(i)); 
+		} 
+	} 
+	i=0; 
+//执行init(),每次清空之前添加的节点 
+	$(".delete").html(""); 
+	for(;i<hisItem.length;i++){ 
+	//alert(hisItem); 
+		$(".delete").prepend('<div class="word-break" id=""style=" z-index: 1000;">'+hisItem[i]+'</div>') 
+		} 
+} 
+init(); 
+
+$("#search").click(function(){ 
+	var value = $("#idNumber1").val(); 
+	var time = (new Date()).getTime(); 
+	
+	if(!value){ 
+		alert("你未输入搜索内容"); 
+		return false; 
+	} 
+	
+	//输入的内容localStorage有记录 
+	if($.inArray(value,hisItem)>=0){ 
+	for(var j = 0;j<localStorage.length;j++){ 
+		if(value==localStorage.getItem(localStorage.key(j))){ 
+			localStorage.removeItem(localStorage.key(j)); 
+		} 
+	} 
+		localStorage.setItem(time,value); 
+	} 
+	//输入的内容localStorage没有记录 
+	else{ 
+		//由于限制了只能有6条记录,所以这里进行判断 
+		if(hisItem.length>4){ 
+			firstKey = hisTime[0] 
+			localStorage.removeItem(firstKey); 
+			localStorage.setItem(time,value); 
+		}else{ 
+			localStorage.setItem(time,value) 
+		} 
+	} 
+	init(); 
+	//正式的时候要提交的!!! 
+	window.location.href = "./searchdetail.html?title="+value;
+
+}); 
+
+document.onkeyup = function (e) {
+var code = e.charCode || e.keyCode;
+if (code == 13) {
+var value = $("#idNumber1").val(); 
+	var time = (new Date()).getTime(); 
+	
+	if(!value){ 
+		alert("你未输入搜索内容"); 
+		return false; 
+	} 
+	
+	//输入的内容localStorage有记录 
+	if($.inArray(value,hisItem)>=0){ 
+	for(var j = 0;j<localStorage.length;j++){ 
+		if(value==localStorage.getItem(localStorage.key(j))){ 
+			localStorage.removeItem(localStorage.key(j)); 
+		} 
+	} 
+		localStorage.setItem(time,value); 
+	} 
+	//输入的内容localStorage没有记录 
+	else{ 
+		//由于限制了只能有6条记录,所以这里进行判断 
+		if(hisItem.length>4){ 
+			firstKey = hisTime[0] 
+			localStorage.removeItem(firstKey); 
+			localStorage.setItem(time,value); 
+		}else{ 
+			localStorage.setItem(time,value) 
+		} 
+	} 
+	init(); 
+	//正式的时候要提交的!!! 
+	$("#form1").submit() ;
+}
+}
+
+//清除记录功能 
+$("#his-dele").click(function(){ 
+	var f = 0; 
+	for(;f<hisTime.length;f++){ 
+		localStorage.removeItem(hisTime[f]); 
+	} 
+	init(); 
+}); 
+//苹果手机不兼容出现input无法取值以下是解决方法 
+$(function(){ 
+	$('.word-break').click(function(){ 
+		var div = $(this).text(); 
+	$('#idNumber1').val(div); 
+	}) 
+	//取到值以后button存储无法取值,这里强迫浏览器强行刷新可解决 
+	$('#search').click(function(){ 
+		window.location.href = "./searchdetail.html?title="+value;
+	}) 
+}) 
+</script> 
+</body> 
+</html> 

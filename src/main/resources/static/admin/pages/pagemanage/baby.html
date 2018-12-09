@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>首页宝贝设置</title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<link rel="stylesheet" href="../../static/css/font.css">
+		<link rel="stylesheet" href="../../static/css/weadmin.css">
+		<!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+		<!--[if lt IE 9]>
+	      <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+	      <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+	    <![endif]-->
+	</head>
+
+	<body>
+		<div class="weadmin-nav">
+			<span class="layui-breadcrumb">
+        <a href="">首页</a>
+        <a href="">页面管理</a>
+        <a>
+          <cite>宝贝</cite></a>
+      </span>
+			<a class="layui-btn layui-btn-sm" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
+				<i class="layui-icon" style="line-height:30px">&#x1002;</i></a>
+		</div>
+		
+		<!-- <div id="testText"></div>-->
+		
+		<form class="layui-form" method="post" action="../../../addtitle" lay-filter="formTestFilter" id="wwwss" style="display:none;">
+          <div class="layui-form-item">
+              <label  class="layui-form-label">
+                  <span class="we-red">*</span>宝贝标题
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="title1" name="title1" required="" lay-verify="required"
+                  autocomplete="off" class="layui-input">
+              </div>
+              <div class="layui-form-mid layui-word-aux">
+                  <span class="we-red">*</span>宝贝标题
+              </div>
+          </div>
+          <div class="layui-form-item">
+              <label for="L_repass" class="layui-form-label"></label>
+              <button  class="layui-btn" lay-filter="add" lay-submit="">更新</button>
+          </div>
+      </form>
+		
+		<form class="layui-form" method="post" action="../../../edittitle" lay-filter="formTestFilter1" id="wwws" style="display:none;">
+        <div class="layui-form-item">
+              <label  class="layui-form-label">
+                  <span class="we-red">*</span>编号
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="tid" name="tid" required="" lay-verify="required"
+                  autocomplete="off" class="layui-input" >
+              </div>
+              <div class="layui-form-mid layui-word-aux">
+                  <span class="we-red">*</span>编号
+              </div>
+          </div>
+          <div class="layui-form-item">
+              <label  class="layui-form-label">
+                  <span class="we-red">*</span>宝贝标题
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="title" name="title" required="" lay-verify="required"
+                  autocomplete="off" class="layui-input">
+              </div>
+              <div class="layui-form-mid layui-word-aux">
+                  <span class="we-red">*</span>宝贝标题
+              </div>
+          </div>
+          <div class="layui-form-item">
+              <label for="L_repass" class="layui-form-label"></label>
+              <button  class="layui-btn" lay-filter="edit" lay-submit="">更新</button>
+          </div>
+      </form>
+		
+		
+		<div class="weadmin-body">
+		
+			<div class="weadmin-block">
+				<!--<button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>-->
+				<button class="layui-btn" onclick="WeAdminShow1('添加宝贝标题',$('#wwwss'),600,400)"><i class="layui-icon"></i>添加</button>
+				<!--<span class="fr" style="line-height:40px">共有数据：88 条</span>-->
+			</div>
+			
+			<div class="layui-card-body">
+			    <table class="layui-hide" id="test" lay-filter="table"></table>
+			</div>
+		</div>
+		
+		<script type="text/html" id="toolBar">
+			<a class="layui-icon" style="font-size: 25px; color: #1AA094;" lay-event="edit">&#xe642;</a>
+			<a class="layui-icon" style="font-size: 25px; color: #1AA094;" lay-event="del">&#xe640;</a>
+		</script>
+		<script src="../../../js/jquery-3.1.0.min.js" charset="utf-8"></script>
+		<script src="../../lib/layui/layui.js" charset="utf-8"></script>
+		<script src="../../static/js/eleDel.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script>
+    layui.use('table', function(){
+        addData();
+        caozuo();
+    });
+function addData(){
+    var table = layui.table;
+    table.render({
+        elem: '#test'
+        ,url:'../../../showBaby'
+        ,limit:10 //默认为10
+        ,cols: [[
+            {field:'tid', width:150, title: '编号', sort: true} //sort：true页面可进行排序操作
+            ,{field:'title', width:320, title: '宝贝标题'}
+            ,{fixed: 'right',title: '操作', width:180,      align:'center', toolbar: '#toolBar'}
+        ]]
+        ,page: true
+        ,done:function(res, curr, count){
+            //数据的回调用，可不写
+        }
+    });
+}
+function caozuo(){
+	 var table = layui.table;
+     //监听查看，删除、编辑按钮--------这里就是lay-event绑定的
+       table.on('tool(table)', function(obj){
+             var data = obj.data;
+            if(obj.event === 'del'){
+                  layer.confirm('真的要删除嘛？', function(index){
+                	  var json=eval('('+JSON.stringify(data)+')');//String转json
+                	  $.ajax({
+          	  			type: 'POST',
+          	  			url: '../../../bdelete?tid='+json['tid'],
+          	  			success: function(msg){
+          	  				obj.del();
+      	  				 	layer.close(index);
+      	  					layer.msg('删除成功!',{icon:1,time:1000});
+      	  					addData();
+          	  			
+          	  					
+          	  			},
+          	  			error:function(msg) {
+          	  				layer.msg('程序异常!',{icon:5,time:1000});
+          	  				addData();
+          	  			}
+          	  		});	
+                	  layer.close(index);
+                	  return false;
+          	      });
+        	        
+               //编辑
+             } else if(obj.event === 'edit'){
+            	 //var json=eval('('+JSON.stringify(data)+')');//String转json                 
+                 
+            	 layui.use(['form','layer','admin'], function(){
+                     var form = layui.form,
+                     	admin = layui.admin,
+                     	layer = layui.layer;
+                     
+                     form.val("formTestFilter1", {
+           			  "title":data.title
+           			 ,"tid":data.tid
+           			});
+                     form.render(null,'formTestFilter1')
+					 WeAdminShow1("更新宝贝标题", $('#wwws'), 600, 400);
+                     //监听提交
+                     form.on('submit(edit)', function(data){
+                   	  $.ajax({
+                              url: data.form.action,
+                              type: data.form.method,
+                              data: $(data.form).serialize(),
+                              success: function (info) {
+                                 if(info.states == true){
+            	 			   		layer.close(layer.index);
+           						    layer.alert("更新成功，nice！", {icon: 6});
+           						  
+	       						    addData();
+             					}
+           					  else{
+           							layer.close(layer.index);
+           						  	layer.alert("更新失败，一定是哪里出了问题！", {icon: 5});
+           							addData();
+           					  }
+                            }
+                           
+                         });            
+                       return false;
+                     });
+                   });      	 
+            	  
+                  
+             }
+           });
+	}
+layui.use(['form','layer','admin'], function(){
+    var form = layui.form,
+    	admin = layui.admin,
+    	layer = layui.layer;
+    	form.render();
+
+    //监听提交
+    form.on('submit(add)', function(data){
+  	  $.ajax({
+                 url: data.form.action,
+                 type: data.form.method,
+                 data: $(data.form).serialize(),
+                 success: function (info) {
+                    if(info.states == true){
+					  
+					  layer.close(layer.index);
+					  layer.alert("添加成功，nice！", {icon: 6});
+     				  addData();
+				}
+				  else{
+					  layer.close(layer.index)
+					  layer.alert("添加失败，一定是哪里出了问题！", {icon: 5});
+					  addData();
+				  }
+                 }
+          
+        });            
+      return false;
+    });
+  });
+function WeAdminShow1(title, url, w, h) {
+	if(title == null || title == '') {
+		title = false;
+	};
+	if(url == null || url == '') {
+		url = "404.html";
+	};
+	if(w == null || w == '') {
+		w = ($(window).width() * 0.9);
+	};
+	if(h == null || h == '') {
+		h = ($(window).height() - 50);
+	};
+	layer.open({
+		type: 1,
+		area: [w + 'px', h + 'px'],
+		fix: false, //不固定
+		maxmin: true,
+		shadeClose: true,
+		shade: 0.4,
+		title: title,
+		content: url
+	});
+}
+</script>
+	</body>
+
+</html>

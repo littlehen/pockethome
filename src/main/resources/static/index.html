@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="telephone=no" name="format-detection">
+<meta content="no-cache" http-equiv="Cache-Control">
+<title>首页</title>
+<link rel="stylesheet" href="css/weui.css"/>
+<link rel="stylesheet" href="css/weui2.css"/>
+<link href="css/shopin.css" rel="stylesheet"/>
+<link href="css/swiper.css" rel="stylesheet"/>
+<style>
+
+.blue-slide {
+	width: 100%;
+	height: 150px;
+}
+.red-slide {
+	width: 100%;
+	height: 150px;
+    background: #F7E5D9;
+}
+.orange-slide {
+	width: 100%;
+	height: 150px;
+    background: #D3E0CE;
+}
+.hese-slide{
+	width: 100%;
+	height: 150px;
+    background: #3B2E1E;
+}
+.swiper-slide1 {
+	width: 90%;
+	height: 100%;
+    font-size: 36px;
+    margin:0px auto;
+    margin-top: -70px;
+}
+input::-ms-input-placeholder{text-align: center;}
+input::-webkit-input-placeholder{text-align: center;}
+.bignotify{
+	height: 42px;
+	width: 100%;
+}
+.notify {
+  height: 42px;
+  width: 96%;
+  background: #FFFFFF;
+  margin: 0 auto;
+  margin-top: 10px;
+  border-bottom: solid 0.5px #A9A9A9;
+  border-radius: 8px;
+  
+	overflow:hidden;
+}
+.notify .icon {
+  height: 32px;
+  width: 40px;
+  float: left;
+  border-right: solid 1px #A9A9A9;
+  font-size: 24px;
+  line-height: 28px;
+  margin: 5px 0;
+  padding-left: 12px;
+  color:#FF6600;
+  -webkit-transition: font-size 0.25s ease-out 0s;
+  -moz-transition: font-size 0.25s ease-out 0s;
+  transition: font-size 0.25s ease-out 0s;
+}
+.notify .notify-text {
+  height: 42px;
+  line-height: 42px;
+  font-size: 12px;
+  text-indent: 55px;
+	z-index: 0;
+}
+.notify .notify-text .txt {
+	overflow:hidden;
+  	text-align: left;
+  	margin-left: 0px;
+}
+.swiper-container1 {
+      width: 75%;
+      height: 100%;
+      float: right;
+}
+
+.title1{
+	border-left: ;
+}
+.title1 p{
+	float: left;
+	font-size: 15px;
+	color: #F04E23;
+}  
+.title1_a{ 
+	width: 100%;
+	position:fixed; 
+	z-index: 9999999;
+	left:0; 
+	top: 30px;
+	height: 30px;
+}
+
+.txt span{
+	color: #FFBC90;
+}
+.fixed-bar1 { position: fixed; z-index: 100; right: 0; left: 0}
+.header1 { background-color: white;top: 0px; height: 30px; overflow: hidden;  }
+.content{
+	padding-bottom: 60px;
+}
+.swiper-slide3{
+	font-size: 20px;
+	background-color: white;
+}
+.leftdiv img{
+	width: 104px;
+	height: 30px;
+	float: left;
+}
+.fourdiv{
+	width: 96%;
+	height: 260px;
+	margin: 0 auto;
+	margin-top: 10px;
+	background-color: #EEEEEE;
+}
+.eachone{
+	width: 49.8%;
+	height: 128px;
+	background-color: white;
+	margin: 0 auto;
+}
+.eachone1{
+	float: left;
+	margin-bottom:0.5px;
+	margin-right:0.5px;
+	border-top-left-radius: 10px;
+}
+.eachone3{
+	float: left;
+	border-bottom-left-radius: 10px;
+}
+.eachone2{
+	float: right;
+	margin-bottom:0.5px;
+	margin-right:0.5px;
+	border-top-right-radius: 10px;
+}
+.eachone4{
+	float: right;
+	border-bottom-right-radius: 10px;
+}
+.eachleft{
+	float: left;
+	margin-left: 5px;
+	margin-top: 5px;
+}
+.eachright{
+	float: right;
+}
+.bigp{
+	font-size: 18px;
+	color: #F02323;
+}
+.smallp{
+	font-size: 11px;
+}
+.eachright img{
+	height: 110px;
+}
+.icon img{
+	width: 63px;
+	height: 22px;
+	vertical-align:middle;
+}
+.pro_all{
+	width: 100%;
+	height: auto;
+	margin-bottom: 200px;
+}
+.swiper-container{overflow: visible;}
+.swiper-container{height: calc(100vh - 120px);}
+.swiper-slide{height: auto;}
+.refreshtip {position: absolute;left: 0;width: 100%;margin: 10px 0;text-align: center;color: #999;}
+.loadtip { display: block;width: 100%;line-height: 40px; height: 40px;text-align: center;color: #999;border-top: 1px solid #ddd;}
+.swiper-slide2{height: auto;}
+.list-group{padding-left: 0;margin-bottom: 20px;z-index:22;}
+.list-group-item{ position: absolute;z-index:2222;display: block;padding: 10px 15px;margin-bottom: -1px;background-color: #fff;border: 1px solid #ddd;}
+.list-group-item:first-child {border-top-left-radius: 4px;border-top-right-radius: 4px;}
+</style>
+</head>
+
+<body >
+<div class="header fixed-bar">
+		<div class="search">
+			<form action="" class="form1">
+				<input class="s-input" id="inputsubmit" type="text" autocomplete="off" placeholder="粘贴宝贝标题 先领券再购物哦" autosave="unique" >				
+			</form>
+		</div>
+</div><!--//头部结束-->
+
+<footer class="footer weui_tab tab-bottom" style="height:55px;">
+    <nav class="weui_tabbar">
+      <a href="index.html" class="weui_tabbar_item weui_bar_item_on">
+        <div class="weui_tabbar_icon1">
+          <i class="iconfont">&#xe600;</i>
+        </div>
+        <p class="weui_tabbar_label1">首页</p>
+      </a>
+      <a href="mysearch.html" class="weui_tabbar_item">
+        <div class="weui_tabbar_icon">
+          <i class="iconfont">&#xe640;</i>
+        </div>
+        <p class="weui_tabbar_label">搜索</p>
+      </a>
+      <a href="javascript:;" class="weui_tabbar_item"></a>
+      <a href="nine.html" class="weui_tabbar_item">
+        <div class="weui_tabbar_icon">
+          <i class="iconfont">&#xe6bf;</i>
+        </div>
+        <p class="weui_tabbar_label">特惠</p>
+      </a>
+      <a href="vip.html" class="weui_tabbar_item">
+        <div class="weui_tabbar_icon">
+          <i class="iconfont" style="margin-left: 1.5px;">&#xe63f;</i>
+        </div>
+        <p class="weui_tabbar_label">我的</p>
+      </a>
+    </nav>
+  </footer>
+
+  <div class="shop-cart">
+    <a id="cart" href="makemoney.html" class="cart">
+      
+        <i class="iconfont iconfont1">&#xe69a;</i>
+    
+      <!--<p class="c-txt">购物车</p>-->
+    </a>
+  </div><!-- //底部导航结束 -->
+
+<div class="content">
+	<div class="slide-banner" data-trackid="首页-焦点图">
+	    <div class="swiper-wrapper mylist">
+	    	
+	  </div> 
+	  <div class="swiper-pagination"></div>
+	</div><!-- //焦点图结束 -->
+	
+	<div class="menu flex swiper-wrapper">
+		<a class="item cell" href="subindex.html" data-trackid="首页-快速入口-1"><span class="icon"><div class="ware-img ui-imglazyload" data-url="images/menu-1.png"></div></span>淘宝</a>
+		<a class="item cell" href="./pinduoduo.html" data-trackid="首页-快速入口-2"><span class="icon"><div class="ware-img ui-imglazyload" data-url="images/menu-2.png"></div></span>拼多多</a>
+		<a class="item cell" href="purchase.html" data-trackid="首页-快速入口-3"><span class="icon"><div class="ware-img ui-imglazyload" data-url="images/menu-3.png"></div></span>京东</a>
+		<a class="item cell" href="allOrder.html" data-trackid="首页-快速入口-4"><span class="icon"><div class="ware-img ui-imglazyload" data-url="images/menu-4.png"></div></span>蘑菇街</a>
+	</div><!-- //主菜单 -->
+
+	<div class="bignotify">
+		<div class="notify">
+		      <div class="icon" style="width: 25%;padding-left: 0px;text-align: center;"><img src="images/pocke.jpg"/></div>      
+		      <div class="swiper-container1 swiper-no-swiping" data-trackid="播报">
+			      <div class="swiper-wrapper notify-text" id="notify-txt">
+						<div class="txt swiper-slide"><span> 郝 * *</span> 获得 15.42 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 郝譬 * *</span> 获得 9.97 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 覆 * *</span> 获得 6.53 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 购骇 * *</span> 获得 8.66 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 技 * *</span> 获得 19.45 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 技却 * *</span> 获得 3.10 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 滑栏 * *</span> 获得 19.38 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 淮邯 * *</span> 获得 18.98 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 径 * *</span> 获得 19.10 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 径强 * *</span> 获得 18.93 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 溅娄哦 * *</span> 获得 9.75 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 疆坏噶 * *</span> 获得 8.91 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 括 * *</span> 获得 8.00 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 涟 * *</span> 获得 11.61 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 烤帘钱 * *</span> 获得 4.97 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 括搅 * *</span> 获得 16.10 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 奔鞍臣 * *</span> 获得 14.22 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 宝美 * *</span> 获得 5.66 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 按溅 * *</span> 获得 9.43 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 按毒颈 * *</span> 获得 5.38 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 扯被 * *</span> 获得 14.81 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 尘 * *</span> 获得 16.69 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 拨急创 * *</span> 获得 3.09 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 伯噶 * *</span> 获得 11.89 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 蛋本 * *</span> 获得 15.65 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 陡聘 * *</span> 获得 5.41 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 淳窘 * *</span> 获得 11.19 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 胆樊 * *</span> 获得 12.26 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 藩 * *</span> 获得 12.81 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 釜呕 * *</span> 获得 6.48 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 陡开 * *</span> 获得 13.60 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 防 * *</span> 获得 6.14 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 钵骇鲸 * *</span> 获得 3.18 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 朝撤吵 * *</span> 获得 5.74 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 苯 * *</span> 获得 6.03 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 步 * *</span> 获得 12.19 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 纯徊 * *</span> 获得 19.56 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 旦 * *</span> 获得 7.17 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 撤 * *</span> 获得 9.71 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 捶 * *</span> 获得 6.70 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 饭冀鸥 * *</span> 获得 10.34 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 妨动 * *</span> 获得 6.96 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 旦 * *</span> 获得 18.13 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 侗 * *</span> 获得 3.65 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 钩极前 * *</span> 获得 13.07 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 够逗蓟 * *</span> 获得 14.14 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 噶翱 * *</span> 获得 5.04 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 斧卤幻 * *</span> 获得 14.09 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 吕 * *</span> 获得 19.73 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 茅卑 * *</span> 获得 6.51 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 粮 * *</span> 获得 9.37 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 吕籍 * *</span> 获得 10.88 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 殴帆 * *</span> 获得 8.67 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 帕被 * *</span> 获得 10.53 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 帽 * *</span> 获得 11.57 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 墓竟莲 * *</span> 获得 19.98 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 浅苟 * *</span> 获得 13.72 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 腔波 * *</span> 获得 18.46 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 偏 * *</span> 获得 11.63 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 偏拷穆 * *</span> 获得 11.35 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 碍 * *</span> 获得 10.29 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 暗 * *</span> 获得 8.24 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 让鸥 * *</span> 获得 15.19 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 让 * *</span> 获得 19.36 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 墨两 * *</span> 获得 6.56 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 某 * *</span> 获得 5.94 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 昧吵槐 * *</span> 获得 12.33 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 毛 * *</span> 获得 12.44 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 坡晾联 * *</span> 获得 12.99 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 片 * *</span> 获得 16.42 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 藕悼 * *</span> 获得 14.88 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 怕前车 * *</span> 获得 6.48 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 燃 * *</span> 获得 7.33 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 唉冀 * *</span> 获得 16.22 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 谴 * *</span> 获得 6.83 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 燃凹 * *</span> 获得 19.71 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 倍墓 * *</span> 获得 16.66 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 簿姜 * *</span> 获得 17.22 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 爱捣 * *</span> 获得 5.77 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 碑醛函 * *</span> 获得 13.84 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 画疆 * *</span> 获得 3.15 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 画法 * *</span> 获得 13.73 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 夯爆缺 * *</span> 获得 6.54 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 好 * *</span> 获得 17.97 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 涧抗道 * *</span> 获得 15.02 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 晶斧 * *</span> 获得 15.30 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 嫉狈穿 * *</span> 获得 11.66 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 浇 * *</span> 获得 19.78 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 靠 * *</span> 获得 5.61 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 揽付 * *</span> 获得 15.08 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 警裁 * *</span> 获得 17.01 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 糠诺 * *</span> 获得 5.10 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 鹿啦 * *</span> 获得 13.49 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 鹿沽圈 * *</span> 获得 11.19 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 扩 * *</span> 获得 4.70 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 帘 * *</span> 获得 13.49 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 级 * *</span> 获得 3.48 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 骄两 * *</span> 获得 13.05 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 沪猾 * *</span> 获得 4.24 元佣金收入！</div>
+						<div class="txt swiper-slide"><span> 籍 * *</span> 获得 4.26 元佣金收入！</div>
+
+			      </div>
+		      </div>
+		</div>
+	</div>
+	
+	<div class="fourdiv">
+		<div class="eachone eachone1">
+			<div class="eachleft">
+				<p class="bigp">聚划算</p>
+				<p class="smallp">低价抢大牌</p>
+			</div>
+			<div class="eachright">
+				<img src="images/img/cate_01.jpg"/>
+			</div>
+		</div>
+		<div class="eachone eachone2">
+			<div class="eachleft">
+				<p class="bigp" style="color: #FDD502;">聚划算</p>
+				<p class="smallp">低价抢大牌</p>
+			</div>
+			<div class="eachright">
+				<img src="images/img/cate_01.jpg"/>
+			</div>
+		</div>
+		<div class="eachone eachone3">
+			<div class="eachleft">
+				<p class="bigp" style="color: #F51D66;">聚划算</p>
+				<p class="smallp">低价抢大牌</p>
+			</div>
+			<div class="eachright">
+				<img src="images/img/cate_01.jpg"/>
+			</div>
+		</div>
+		<div class="eachone eachone4">
+			<div class="eachleft">
+				<p class="bigp" style="color: #1A1AA6;">聚划算</p>
+				<p class="smallp">低价抢大牌</p>
+			</div>
+			<div class="eachright">
+				<img src="images/img/cate_01.jpg"/>
+			</div>
+		</div>
+	</div>
+	
+	<div class="cate-swiper mt" data-trackid="首页-品类">
+		<div class="swiper-title title1">
+			<div class="leftdiv">
+				<img src="images/xianshifengqiang.jpg"/>
+			</div>
+		    <!-- 
+		    <div class="swiper-wrapper title2">
+				<div class="swiper-slide  swiper-slide3 active" id="slide0" style="font-size: 18px;"><div style="line-height: 20px;"><span id="shijian1">00:00</span><br><span id="span1" style="font-size: 12px;">未开抢</span></div></div>
+				<div class="swiper-slide swiper-slide3" id="slide1" style="font-size: 18px;"><div style="line-height: 20px;"><span id="shijian2">09:00</span><br><span id="span1" style="font-size: 12px;">未开抢</span></div></div>
+				<div class="swiper-slide swiper-slide3" id="slide2" style="font-size: 18px;"><div style="line-height: 20px;"><span id="shijian2">10:00</span><br><span id="span1" style="font-size: 12px;">未开抢</span></div></div>
+				<div class="swiper-slide swiper-slide3" id="slide3" style="font-size: 18px;"><div style="line-height: 20px;"><span id="shijian2">12:00</span><br><span id="span1" style="font-size: 12px;">未开抢</span></div></div>
+				<div class="swiper-slide swiper-slide3" id="slide4" style="font-size: 18px;"><div style="line-height: 20px;"><span id="shijian2">15:00</span><br><span id="span1" style="font-size: 12px;">未开抢</span></div></div>
+				<div class="swiper-slide swiper-slide3" id="slide5" style="font-size: 18px;"><div style="line-height: 20px;"><span id="shijian2">17:00</span><br><span id="span1" style="font-size: 12px;">未开抢</span></div></div>
+				<div class="swiper-slide swiper-slide3" id="slide6" style="font-size: 18px;"><div style="line-height: 20px;"><span id="shijian2">20:00</span><br><span id="span1" style="font-size: 12px;">未开抢</span></div></div>
+		    </div>
+		     -->
+		</div>
+	</div><!-- //首页品类结束 -->
+	
+	
+	<div class="swiper-container">
+			<div class="swiper-wrapper swiper-wrapper2">
+							<div class="swiper-slide swiper-slide2 list-group">
+							
+							</div>
+			</div>
+
+		<div class="loadtip">上拉加载更多</div>
+		<div class="swiper-scrollbar"></div>
+	</div>
+
+</div>
+<script type="text/html" id = "carouselurldiv">
+	<div class="swiper-slide">
+	    		<div class="blue-slide" style="background-color:{color};"></div>
+	    		<div class="swiper-slide1" ><a  href="{carouselurl}" data-trackid="首页-焦点图-1"><div class="ware-img ware-img1 ui-imglazyload" style="background-image: url('{imgaurl}');background-repeat:no-repeat; background-size:100% 100%;-moz-background-size:100% 100%;height:120px"></div></a></div>
+	</div>
+</script>
+<script type="text/html" id = "searchdetaildiv">
+				<div class="productdetail" onclick="getId(this)" id="{goods_id}">
+							<div class="product-img" >
+										<img src="{goods_thumbnail_url}" />
+									</div>
+									<div class="product-text">
+										<p class="pro_title">{goods_name}</p>
+										<div class="updiv">
+											<p class="oldmoney"><s>￥{min_group_price}</s></p>
+											<p class="xiaoliang">{sold_quantity}人已买</p>
+										</div>
+										
+										<div class="downdiv">
+											<p class="newmoney">￥{newmoney}</p>
+											<div id="redbackgrounp">
+												<p class="quan">{coupon_discount}元券&nbsp;</p>
+											</div>					
+										</div>
+										
+										<div class="earn">
+											<div id="showearn">
+												分享赚￥1.34
+											</div>
+											<div id="updateearn">
+												升级赚￥1.74
+											</div>					
+										</div>				
+									</div>
+								</div>
+</script>
+<script src="js/zepto.min.js"></script>
+<script src="js/swiper.js"></script>
+<script src="js/shopin.js"></script>
+<script src="js/base.min.js"></script>
+<script src="js/tab.js"></script>
+
+
+<script>
+$("#inputsubmit").click(function(){
+    window.location.href='mysearch.html';
+})
+initCarousrlUrl();
+//焦点图
+
+var swiper2 = new Swiper('.swiper-container1', {
+    direction: 'vertical',
+    loop: true,
+    autoplay: 4000,
+    autoplayDisableOnInteraction: false,
+    
+   });
+
+//分类swiper
+//var titSwiper;
+//var conSwiper;
+//function goLocation(i){
+//	conSwiper.slideTo(i, 300, function(){});
+//	setClass(i);
+//}
+//var titSwiper = new Swiper('.swiper-title', {
+//    slidesPerView: 4.5
+//});
+
+//var conSwiper = new Swiper('.swiper-container', {
+//	pagination : '.pagination',
+//    preloadImages: false,
+//    lazyLoading: true
+//});
+//conSwiper.params.onSlideChangeEnd = function(){
+//	var index = conSwiper.activeIndex;
+//	var prevIndex = conSwiper.previousIndex;
+//	if (index > prevIndex){
+//		titSwiper.slideTo(index, 300, function() {});
+//		var slidleft = $("#slide" + index).offset().left;
+//		var slidwidth = $("#slide" + index).width();
+//		setClass(index);
+//	}else{
+//		titSwiper.slideTo(index, 300, function() {});
+//		setClass(index);
+//	};
+//};
+//$(".swiper-title").find('.swiper-slide').each(function(index, el) {
+//	$(el).on('click', function(){
+//		goLocation(index);
+//	});
+//});
+//function setClass(i) {
+//	$(".swiper-title").find('.swiper-slide').each(function(index, el) {
+//		if (index != i) {
+//			if ($(el).hasClass("active")) {
+//				$(el).removeClass("active");
+//			}
+//		} else {
+//			$(el).addClass("active");
+//		}
+//	});
+//};
+
+//选项卡
+//$(".tab-wrapper").tab();
+//$(window).scroll(function(){
+//				if($(window).scrollTop()>320){	
+//					$('.title2').addClass('title1_a');
+//					$('.header').addClass('header1');
+//				}else{			
+					
+//					$('.title2').removeClass('title1_a');
+//					$('.header').removeClass('header1');
+//				}
+//}).trigger("scroll");
+//function Timer(year,month,day,hour,minute,second){ 
+//  var leftTime = (new Date(year,month-1,day,hour,minute,second)) - (new Date()); //计算剩余的毫秒数 
+//  var days = parseInt(leftTime / 1000 / 60 / 60 / 24 , 10); //计算剩余的天数 
+//  var hours = parseInt(leftTime / 1000 / 60 / 60 % 24 , 10); //计算剩余的小时 
+//  var minutes = parseInt(leftTime / 1000 / 60 % 60, 10);//计算剩余的分钟 
+//    var seconds = parseInt(leftTime / 1000 % 60, 10);//计算剩余的秒数 
+//  days = checkTime(days); 
+//  hours = checkTime(hours);
+//  minutes = checkTime(minutes);  
+//  seconds = checkTime(seconds); 
+//  setInterval("Timer(2018,11,6,14,56,00)",1000); 
+//  if (leftTime<0) { 
+//  	document.getElementById("timer").innerHTML = "已开抢";
+//  }
+//  else{
+//  	 document.getElementById("timer").innerHTML = days+"天" + hours+"小时" + minutes+"分"+seconds+"秒"; 
+//  }
+  
+//} 
+//function checkTime(i){ //将0-9的数字前面加上0，例1变为01 
+//  if(i<10) 
+//  { 
+//    i = "0" + i;  
+//  } 
+//  return i; 
+//} 
+	var currentPage = 0;
+	var loadFlag = true;
+	initmyselectData();
+	
+	
+	//文档高度
+	function getDocumentTop() {
+	var scrollTop = 0,
+	bodyScrollTop = 0,
+	documentScrollTop = 0;
+	if (document.body) {
+	bodyScrollTop = document.body.scrollTop;
+	}
+	if (document.documentElement) {
+	documentScrollTop = document.documentElement.scrollTop;
+	}
+	scrollTop = (bodyScrollTop - documentScrollTop > 0) ? bodyScrollTop : documentScrollTop;
+	return scrollTop;
+	}
+	//可视窗口高度
+	function getWindowHeight() {
+	var windowHeight = 0;
+	if (document.compatMode == "CSS1Compat") {
+	windowHeight = document.documentElement.clientHeight;
+	} else {
+	windowHeight = document.body.clientHeight;
+	}
+	return windowHeight;
+	}
+
+	//滚动条滚动高度
+	function getScrollHeight() {
+	var scrollHeight = 0,
+	bodyScrollHeight = 0,
+	documentScrollHeight = 0;
+	if (document.body) {
+	bodyScrollHeight = document.body.scrollHeight;
+	}
+	if (document.documentElement) {
+	documentScrollHeight = document.documentElement.scrollHeight;
+	}
+	scrollHeight = (bodyScrollHeight - documentScrollHeight > 0) ? bodyScrollHeight : documentScrollHeight;
+	return scrollHeight;
+	}
+
+	//下面我们需要一个监听滚动条的事件
+	window.onscroll = function () {
+	//当滚动条移动马上就出发我们上面定义的事件触发函数,但是我们要求的是滚动条到底后才触发,所以自然这个触发事件里面需要逻辑控制一下.
+	if(getScrollHeight() == getWindowHeight() + getDocumentTop()){
+		currentPage = currentPage + 20;
+		initTabData(currentPage,false);
+}
+	}
+function initCarousrlUrl(){
+	$.ajax({
+		url: "./getCarouselUrls",
+		async : true,
+		type: "post",
+		dataType:'json',
+		success : function(result) {
+			if(result.state){
+				var div = "";
+				for(var i = 0;i < result.lsize; i++){
+	        		div += carouselurldiv.innerHTML.
+	        		replace(/{carouselurl}/,result.list[i].hdurl).
+	        		replace(/{imgaurl}/,result.list[i].imgurl).
+	        		replace(/{color}/,result.list[i].color);
+	        		
+				};
+				$(".mylist").append(div);
+			}
+			var mySwiper = new Swiper ('.slide-banner', {
+				loop: true,
+				pagination: '.swiper-pagination',
+			    autoplay: 4000,
+			    autoplayDisableOnInteraction: false,
+			    effect : 'fade',
+			    
+			    	
+			});
+		}
+	});
+}
+function initmyselectData(){
+	$.ajax({
+		url : "./getselectgoods",
+		async : true,
+		type : "post",
+		dataType:'json',
+		success : function(result) {	
+			var div = "";
+	    	if(result.length > 0){
+	    		for(var i = 0;i < result.length; i++){
+	    			var jsObject = JSON.parse(result[i]);
+	        		div += searchdetaildiv.innerHTML.
+	        		replace(/{goods_thumbnail_url}/,jsObject.goods_search_response.goods_list[0].goods_thumbnail_url).
+	        		replace(/{goods_id}/,jsObject.goods_search_response.goods_list[0].goods_id).
+	        		replace(/{goods_name}/,jsObject.goods_search_response.goods_list[0].goods_name).
+	        		replace(/{min_group_price}/,jsObject.goods_search_response.goods_list[0].min_group_price/100).
+	        		replace(/{sold_quantity}/,jsObject.goods_search_response.goods_list[0].sold_quantity).
+	                replace(/{newmoney}/,(jsObject.goods_search_response.goods_list[0].min_group_price-jsObject.goods_search_response.goods_list[0].coupon_discount)/100).
+	                replace(/{coupon_discount}/,jsObject.goods_search_response.goods_list[0].coupon_discount/100);
+	        	}
+	    	}          
+	      // document.getElementById('content1').innerHTML = div;
+			$(".list-group").empty().append(div);
+			initTabData(currentPage,true);
+		}
+		});
+}
+function initTabData(offset,isFirst){
+
+	//滑动触发加载
+	var data = {
+	channel_type: "1",
+	offset : offset,
+	};
+
+	//alert(index);
+	/**渲染加载数据**/
+	$.ajax({
+	url : "./getrecommendgoods",
+	async : true,
+	type : "post",
+	dataType:'json',
+	data : data,
+	success : function(result) {
+		var jsonString = JSON.stringify(result);// 转成JSON格式
+    	var jsObject = JSON.parse(jsonString);
+		var div = "";
+    	if(jsObject.goods_basic_detail_response.list.length > 0){
+    		for(var i = 0;i < jsObject.goods_basic_detail_response.list.length; i++){
+        		div += searchdetaildiv.innerHTML.
+        		replace(/{goods_thumbnail_url}/,jsObject.goods_basic_detail_response.list[i].goods_thumbnail_url).
+        		replace(/{goods_id}/,jsObject.goods_basic_detail_response.list[i].goods_id).
+        		replace(/{goods_name}/,jsObject.goods_basic_detail_response.list[i].goods_name).
+        		replace(/{min_group_price}/,jsObject.goods_basic_detail_response.list[i].min_group_price/100).
+        		replace(/{sold_quantity}/,jsObject.goods_basic_detail_response.list[i].sold_quantity).
+                replace(/{newmoney}/,(jsObject.goods_basic_detail_response.list[i].min_group_price-jsObject.goods_basic_detail_response.list[i].coupon_discount)/100).
+                replace(/{coupon_discount}/,jsObject.goods_basic_detail_response.list[i].coupon_discount/100);
+        	}
+    	}          
+      // document.getElementById('content1').innerHTML = div;
+		//$("#content1").append(div);		
+		$(".list-group").append(div);
+	}
+	});
+}
+function getId(obj){
+    //alert($("#2500869495").text());
+    window.location.href = "./product.html?goods_id=["+obj.id+"]";
+}
+</script>
+</body>
+</html>

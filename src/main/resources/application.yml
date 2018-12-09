@@ -1,7 +1,7 @@
 spring: 
   datasource: 
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/pms?useUnicode=true&characterEncoding=UTF-8
+    url: jdbc:mysql://127.0.0.1:3306/pockethome?useUnicode=true&characterEncoding=UTF-8
     username: root
     password: root
     type: com.alibaba.druid.pool.DruidDataSource
@@ -52,3 +52,8 @@ weichat:
   accesstoken: https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET
   messagetemplate: https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=
   ordertemplateid: rTxoIxu4UKgJrW2P377X9JkWyMSvhzqSB1_hMvJdRpw
+CommonValues: 
+    base_url: spring
+pinduoduo: 
+   client_id: 4b45df16ebb643bf9594e93e55b289da
+   client_secret: 9c16f347d216669b85061c1ee6d407ac6b66b9eb

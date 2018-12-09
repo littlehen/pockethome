@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="telephone=no" name="format-detection">
+<meta content="no-cache" http-equiv="Cache-Control">
+<title>创建分享</title>
+<link rel="stylesheet" href="css/weui.css"/>
+<link rel="stylesheet" href="css/weui2.css"/>
+<style type="text/css">
+body{height:100%; overflow:hidden; margin:0px; padding:0px;}
+.header { 
+	position: fixed;
+	z-index:200;
+	height: 40px;
+	left: 0px;
+	width:100%;
+	background-color: white;
+	top:0;
+}
+.center{
+	width: 96%;
+	height: 30px;
+	margin: 0 auto;
+}
+.left{
+	height: 30px;
+	width: 6%;
+	float: left;
+	margin-left: 5px;
+}
+.center p{
+	text-align: center;
+}
+a {color: black;text-decoration: none;}
+a:hover,a:focus {color: #2a6496;text-decoration: underline;}
+a:focus {outline: thin dotted;outline: 5px auto -webkit-focus-ring-color;outline-offset: -2px;}
+.content{
+	width: 100%;
+	position: fixed;
+	top:0px;
+	left: 0;
+	z-index: 196;
+	height:575px;
+}
+.mytitle{
+	width: 98%;
+	font-size: 18px;
+	margin: 0 auto;
+	margin-top: 10px;	
+	font-family: STXihei;
+}
+.second{
+	width: 98%;
+	height: 25px;
+	margin: 10px auto;
+}
+.sleft{
+	float: left;
+}
+.sright{
+	float: right;
+	width: 80px;
+	height: 24px;
+	text-align: center;
+	position: relative;
+	margin:0 auto
+}
+.sright img{
+	width: 80px;
+	height: 24px;
+}
+.sright p{
+	width: 100%;
+	margin: 0 auto;
+	margin-top: 1px;
+	text-align: center;
+}
+.xianjia{
+	font-size: 16px;
+	color: rgb(240,0,0);
+}
+.yuanjia{
+	font-size: 12px;
+	color: rgb(30,30,30);
+}
+.quan{
+	float: right;
+	text-align: center;
+	color: white;
+	line-height: 22px;
+}
+.myall img{
+	width: 100%;
+	height: auto;
+}
+.mybottom{
+	width: 100%;
+	height: 145px;
+	margin-top: 5px
+}
+.bleft{
+	float: left;
+	width: 55%;
+	height: auto;
+}
+.bleft img{
+	width: 100%;
+	height: auto;
+}
+.bright{
+	float: right;
+	width: 45%;
+	height: auto;
+}
+.bright img{
+	float: right;
+	margin-right: 10px;
+	width: 100px;
+	height: 100px;
+}
+.bright span{
+	float: right;
+	margin-right: 18px;
+	color: #878787;
+	font-size: 10px
+}
+.all1{
+	width: 100%;
+	height: 100%;
+	background-color: white;
+	margin-top: 50px;
+}
+#contbox{
+	width: 100%;
+	height: auto;
+}
+.wenzi{
+	width: 90%;
+	text-align: left;
+}
+.wenzi p{
+	font-size:12px
+}
+#qqq{
+	width: 100%;
+	height: 575px;
+	background-color:white;
+}
+
+.copybtn { /* 按钮美化 */
+	width: 270px; /* 宽度 */
+	height: 40px; /* 高度 */
+	border-width: 0px; /* 边框宽度 */
+	border-radius: 3px; /* 边框半径 */
+	background: #1E90FF; /* 背景颜色 */
+	cursor: pointer; /* 鼠标移入按钮范围时出现手势 */
+	outline: none; /* 不显示轮廓线 */
+	font-family: Microsoft YaHei; /* 设置字体 */
+	color: white; /* 字体颜色 */
+	font-size: 17px; /* 字体大小 */
+}
+.copybtn:hover { /* 鼠标移入按钮范围时改变颜色 */
+	background: #5599FF;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+	<div class="center">
+		<a href="index.html" >
+			<div class="left">
+				<i class="iconfont">&#xe601;</i>
+			</div>
+		</a>
+		<p>创建分享</p>
+	</div>
+</div><!--//头部结束-->
+
+<div class="all1" align="center">
+	<img id="photosrc" style="width: 90%;" src=""/>
+	<div class="wenzi" style="display: none;" id="wenzi">		
+	</div>
+	<button class="copybtn" data-clipboard-action="copy" data-clipboard-target=".wenzi" style="display:none;">复制【淘口令】</button>
+</div>
+
+<div class="content">
+	<div id="contbox" ><!--style="z-index:-1"-->
+		
+		<div class="mytitle" id="title">
+			
+		</div>
+		<div class="second"> 
+			<div class="sleft">
+				<span class="xianjia" id="xianjia">
+					
+				</span>
+				<span class="yuanjia" id="yuanjia">
+				</span>
+			</div>
+			<div class="sright">
+				<img  src="images/quanback.jpg" style="display:block;"/>
+				 <span id="youhuiquan" style="position: absolute;bottom: 0;top:0;left:0;right:0;text-align: center;line-height: 25px;" ></span>
+			</div>
+		</div>
+		<div class="myall">
+			<img id="lunbotu1" src=""/>
+		</div>
+		<div class="mybottom">
+			<div class="bleft">
+				<img src="images/logo1.png"/>
+			</div>
+			<div class="bright">
+				<img id="photosrc1" src=""/>
+				<span>长按识别二维码</span>
+			</div>
+			
+		</div>
+		
+	</div>
+</div>
+<script type="text/html" id = "wenzip">
+	<p>【拼多多价】{pddjia}</p>
+	<p>【券后价】{pddqhj}</p>
+	<p>【抢券购买】 <i class="iconfont">&#xe627;</i>{shorturl}</p>
+	<p>-------------</p>
+</script>
+<script src="js/jquery-3.1.0.min.js"></script>
+<script src="js/html2canvas.js"></script>
+<script src="js/clipboard.min.js"></script>  
+<script>
+window.onload = function () {
+	var a=GetRequest();
+	var title = a['title'];
+	var yuanjia = a['yuanjia'];
+	var xianjia = a['xianjia'];
+	var youhuiquan = a['youhuiquan'];
+	var lunbotu1 = a['lunbotu1'];
+	var shorturl = a['shorturl'];
+	$("#title").html(title);
+	$("#yuanjia").html("原价:"+yuanjia);
+	$("#xianjia").html("￥"+xianjia);
+	$("#youhuiquan").html(youhuiquan+"元券");
+	$("#lunbotu1").attr('src',lunbotu1);  
+	$("#photosrc1").attr('src',"/pockethome/qr-code?url="+shorturl);
+	
+	var ppp="";
+	ppp += wenzip.innerHTML.
+		replace(/{pddjia}/,yuanjia).
+		replace(/{pddqhj}/,xianjia).
+		replace(/{shorturl}/,shorturl);
+	document.getElementById('wenzi').innerHTML = ppp;
+	
+	var getPixelRatio = function(context) {
+		var backingStore = context.backingStorePixelRatio ||
+			context.webkitBackingStorePixelRatio ||
+	    	context.mozBackingStorePixelRatio ||
+	    	context.msBackingStorePixelRatio ||
+	    	context.oBackingStorePixelRatio ||
+	    	context.backingStorePixelRatio || 1;
+		return (window.devicePixelRatio || 1) / backingStore;
+	};
+	
+	var canvas = document.createElement('canvas');
+	var context = canvas.getContext('2d');
+	var scaleBy = getPixelRatio(context);
+	var w = $("#contbox").width() ;
+	var h = $("#contbox").height() ;
+	canvas.width = w * scaleBy;
+	canvas.height = h * scaleBy;
+	canvas.style.width = w + 'px';
+	canvas.style.height = h + 'px';
+	context.scale(scaleBy, scaleBy);
+		html2canvas($("#contbox"),{ 
+			canvas:canvas,
+			useCORS: true,
+	        onrendered: function(canvas) {
+			
+	        //将canvas画布放大若干倍，然后盛放在较小的容器内，就显得不模糊了
+	        var timestamp = Date.parse(new Date());
+	        //把截取到的图片替换到a标签的路径下载  
+	       // document.getElementById("photosrc").setAttribute('src', canvas.toDataURL());
+	        $("#photosrc").attr('src',canvas.toDataURL());  
+	       //  $("#photosrc").attr('download',timestamp + '.png') ;   
+	        //document.body.appendChild(canvas);
+	        //$(".content").append(canvas);
+	       // srcurl = canvas.toDataURL();
+	        $(".content").css('display','none'); 
+	        $(".wenzi").css('display','block');
+	        $(".copybtn").css('display','block');
+	    }  
+	    //可以带上宽高截取你所需要的部分内容    
+	   });
+};
+
+
+function GetRequest() {
+    var url = location.search; //获取url中"?"符后的字串
+    var theRequest = new Object();
+    if (url.indexOf("?") != -1) {
+        var str = url.substr(1);
+        strs = str.split("&");
+        for (var i = 0; i < strs.length; i++) {
+            theRequest[strs[i].split("=")[0]] = decodeURIComponent(strs[i].split("=")[1]);
+        }
+    }
+    return theRequest;
+}
+
+var clipboard = new ClipboardJS('.copybtn');
+ 
+     clipboard.on('success', function(e) {
+         alert("复制成功,要记得去粘贴喔！");
+     });
+ 
+     clipboard.on('error', function(e) {
+    	  alert("复制失败，请手动复制一下喔！");
+    });	
+</script>
+</body>
+</html>

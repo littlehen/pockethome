@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>搜索详情</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<link rel="stylesheet" type="text/css" href="css/swiper.css"/>
+<link rel="stylesheet" href="css/weui2.css"/>
+<style type="text/css">
+html, body{height: 100%;font-family: "微软雅黑";}
+*{margin: 0;padding: 0;box-sizing: border-box;}
+a {color: #428bca;text-decoration: none;}
+a:hover,a:focus {color: #2a6496;text-decoration: underline;}
+a:focus {outline: thin dotted;outline: 5px auto -webkit-focus-ring-color;outline-offset: -2px;}
+
+.padd_40{padding-top: 80px;background: #F5F5F5;overflow-x:hidden;}
+.a{text-align:center;line-height: 40px;position: fixed;top: 0;left: 0;width: 100%;z-index: 10;border-bottom: 1px #ccc solid; background: #f50;color: #fff;}
+.tab{display: flex;line-height: 40px;position: fixed;top: 40px;width: 100%;z-index: 10;border-bottom: 1px #ccc solid;}
+.tab a{width: 33.333333%;background: #fff;text-align: center;}
+.tab .active{border-bottom: 1px #f50 solid; color: #f50;}
+.panel{margin: 0;}
+
+.refreshtip {position: absolute;left: 0;width: 100%;margin: 10px 0;text-align: center;color: #999;}
+.swiper-container{overflow: visible;}
+.loadtip { display: block;width: 100%;line-height: 40px; height: 40px;text-align: center;color: #999;border-top: 1px solid #ddd;}
+.swiper-container, .w{height: calc(100vh - 120px);}
+.swiper-slide{height: auto;}
+
+.text-center{text-align: center;}
+.list-group{padding-left: 0;margin-bottom: 20px;z-index:22;}
+.list-group-item{ position: absolute;z-index:2222;display: block;padding: 10px 15px;margin-bottom: -1px;background-color: #fff;border: 1px solid #ddd;}
+.list-group-item:first-child {border-top-left-radius: 4px;border-top-right-radius: 4px;}
+
+
+.leftima{
+	width: 35%;
+	height: 100px;
+	float: left;
+}
+.leftima img{
+	width:100%;
+	height:100%;
+}
+.rightdiv{
+	width: 100%;
+}
+.rightdiv p{
+	font-size: 12px;
+}
+.updiv{
+	width: 100%;
+	height: 25px;
+	margin-top: 10px;
+}
+.downdiv{
+	width: 100%;
+	height: 25px;
+	margin-top: 5px;
+}
+.oldmoney {
+	float: left;
+	font-size: 12px;
+	color: #9F9F9F;
+}
+.xiaoliang {
+	float: right;
+	color: #9F9F9F;
+}
+.newmoney{
+	float: left;
+	line-height: 20px;
+	color: #C7414F;
+}
+.quan{
+	float: right;
+	text-align: center;
+	color: white;
+}
+#redbackgrounp{
+	float: right;
+	width: 80px;
+	height: 24px;
+	text-align: center;
+	background-image: url(images/quanback.jpg);
+	background-size: 75px;
+	background-repeat: no-repeat;
+}
+#redbackgrounp p{
+	width: 95%;
+	margin: 0 auto;
+	margin-top: 1px;
+	line-height: 22px;
+}
+.downdiv p{
+	font-size: 18px;
+}
+.updiv p{
+	font-size: 12px;
+}
+.center p{
+	text-align: center;
+}
+.swiper-wrapper{
+	z-index: 22;
+}
+
+</style>
+</head>
+<body class="padd_40">
+<div class="a">
+<a href="index.html" >
+			<div class="left">
+				<i class="iconfont">&#xe601;</i>
+			</div>
+		</a>
+搜索详情
+</div>
+<div class="tab">
+<a class="active one" href="javascript:;">综合</a>
+		<a class="one" href="javascript:;">佣金</a>
+		<a class="one" href="javascript:;">销量</a>
+		<a id="jiage" href="javascript:;">价格</a>
+</div>
+<div class="swiper-container">
+<div class="refreshtip">下拉可以刷新</div>
+<div class="swiper-wrapper w">
+<div class="swiper-slide d">
+<div class="init-loading list-group-item text-center" style="display: none;">下拉可以刷新</div>
+<div class="swiper-container2">
+<div class="swiper-wrapper">
+<div class="swiper-slide list-group">
+</div>
+<div class="swiper-slide list-group">
+</div>
+<div class="swiper-slide list-group">
+</div>
+<div class="swiper-slide list-group">
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="loadtip">上拉加载更多</div>
+<div class="swiper-scrollbar"></div>
+</div>
+
+
+<script type="text/html" id = "searchdetaildiv">
+						<div class="list-group-item " onclick="getId(this)" id="{goods_id}">
+							<div style="display:none;" >{goods_id}</div> 
+							<div class="leftima">
+								<img src="{goods_thumbnail_url}" />
+							</div>
+							<div class="rightdiv">
+								<p class="pro_title">{goods_name}</p>
+								<div class="updiv">
+									<p class="oldmoney"><s>￥{min_group_price}</s></p>
+									<p class="xiaoliang">已售{sold_quantity}件</p>
+								</div>
+								<div class="downdiv">
+									<p class="newmoney">￥{newmoney}</p>
+									<div id="redbackgrounp">
+										<p class="quan">{coupon_discount}元券&nbsp;</p>
+									</div>									
+								</div>
+							</div>
+						</div>
+</script>
+
+<script src="js/jquery-3.1.0.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/swiper.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+
+var a=GetRequest();
+var title=a['title'];
+
+var statusArray = ["0","14","6","3","4"];
+var currentPage = ["1","1","1","1","1"];
+var currentIndex = 0;
+var paixu = 1;//1代表升序  0代表降序
+
+var loadFlag = true;
+var oi = 0;
+var mySwiper = new Swiper('.swiper-container',{
+direction: 'vertical',
+scrollbar: '.swiper-scrollbar',
+slidesPerView: 'auto',
+mousewheelControl: true,
+freeMode: true,
+
+onInit: function(swiper) {
+	//Swiper初始化4个tab页面
+	for (var i = 0; i < statusArray.length; i++) {
+		initTabData(1, i, true);
+	}
+},
+onTouchMove: function(swiper){//手动滑动中触发
+var _viewHeight = document.getElementsByClassName('swiper-wrapper')[0].offsetHeight;
+            var _contentHeight = document.getElementsByClassName('swiper-slide')[0].offsetHeight;
+            
+            
+            if(mySwiper.translate < 50 && mySwiper.translate > 0) {
+$(".init-loading").html('下拉刷新...').show();
+}else if(mySwiper.translate > 50 ){
+$(".init-loading").html('释放刷新...').show();
+}
+},
+onTouchEnd: function(swiper) {
+var _viewHeight = document.getElementsByClassName('swiper-wrapper')[0].offsetHeight;
+            var _contentHeight = document.getElementsByClassName('swiper-slide')[0].offsetHeight;
+             // 上拉加载
+            if(mySwiper.translate <= _viewHeight - _contentHeight - 50 && mySwiper.translate < 0) {
+                // console.log("已经到达底部！");
+               
+                if(loadFlag){
+                $(".loadtip").html('正在加载...');
+                }else{
+                $(".loadtip").html('没有更多啦！');
+                }
+                
+                setTimeout(function() {					
+					if(paixu == 1 && mySwiper2.activeIndex == 3)
+						initTabData(++currentPage[mySwiper2.activeIndex+1],mySwiper2.activeIndex+1,false);
+					else
+						initTabData(++currentPage[mySwiper2.activeIndex],mySwiper2.activeIndex,false);
+                     $(".loadtip").html('上拉加载更多...');
+                    mySwiper.update(); // 重新计算高度;
+                }, 800);
+            }
+            
+            // 下拉刷新
+            if(mySwiper.translate >= 50) {
+                $(".init-loading").html('正在刷新...').show();
+                $(".loadtip").html('上拉加载更多');
+                loadFlag = true;
+                
+                setTimeout(function() {
+                    $(".refreshtip").show(0);
+                    $(".init-loading").html('刷新成功！');
+                    setTimeout(function(){
+						initTabData(1,mySwiper2.activeIndex,true);
+						currentPage[mySwiper2.activeIndex] = 1;
+						if(paixu == 0 && mySwiper2.activeIndex == 3){
+							currentPage[mySwiper2.activeIndex+1] = 1;
+						}
+                 	    $(".init-loading").html('').hide();
+                    },800);
+                    $(".loadtip").show(0);
+                    
+                    //刷新操作
+                    mySwiper.update(); // 重新计算高度;
+                }, 1000);
+            }else if(mySwiper.translate >= 0 && mySwiper.translate < 50){
+            $(".init-loading").html('').hide();
+            }
+            return false;
+}
+
+});
+var mySwiper2 = new Swiper('.swiper-container2',{
+		onTransitionEnd: function(swiper){
+		
+		$('.w').css('transform', 'translate3d(0px, 0px, 0px)')
+		$('.swiper-container2 .swiper-slide-active').css('height','auto').siblings('.swiper-slide').css('height','0px');
+		mySwiper.update();
+		
+		$('.tab a').eq(mySwiper2.activeIndex).addClass('active').siblings('a').removeClass('active');
+		}
+
+	});
+$('.one').click(function(){
+
+	$(this).addClass('active').siblings('a').removeClass('active');
+	mySwiper2.slideTo($(this).index(), 500, false)
+	
+	$('.w').css('transform', 'translate3d(0px, 0px, 0px)')
+	$('.swiper-container2 .swiper-slide-active').css('height','auto').siblings('.swiper-slide').css('height','0px');
+	mySwiper.update();
+	paixu = 1;
+});
+$('#jiage').click(function(){
+	
+	$(this).addClass('active').siblings('a').removeClass('active');
+	mySwiper2.slideTo($(this).index(), 500, false)
+	$('.w').css('transform', 'translate3d(0px, 0px, 0px)')
+	$('.swiper-container2 .swiper-slide-active').css('height','auto').siblings('.swiper-slide').css('height','0px');
+	mySwiper.update();
+	if(paixu == 0){
+		initTabData(1,mySwiper2.activeIndex+1,true);
+		paixu = 1;
+	}else{
+		initTabData(1,mySwiper2.activeIndex,true);
+		paixu = 0;
+	}
+	
+});
+/**tab初始化**/
+function initTabData(page,index,isFirst){
+
+	//滑动触发加载
+	var data = {
+	page : page,
+	title: title,
+	sort_type :statusArray[index]
+	};
+
+	//alert(index);
+	/**渲染加载数据**/
+	$.ajax({
+	url : "./getSearchDetail",
+	async : true,
+	type : "post",
+	dataType:'JSON',
+	data : data,
+	success : function(result) {
+		var jsonString = JSON.stringify(result);// 转成JSON格式
+    	var jsObject = JSON.parse(jsonString);
+		var div = "";
+    	if(jsObject.goods_search_response.goods_list.length > 0){
+    		for(var i = 0;i < jsObject.goods_search_response.goods_list.length; i++){
+        		div += searchdetaildiv.innerHTML.
+        		replace(/{goods_thumbnail_url}/,jsObject.goods_search_response.goods_list[i].goods_thumbnail_url).
+        		replace(/{goods_id}/,jsObject.goods_search_response.goods_list[i].goods_id).
+        		replace(/{goods_id}/,jsObject.goods_search_response.goods_list[i].goods_id).
+        		replace(/{goods_name}/,jsObject.goods_search_response.goods_list[i].goods_name).
+        		replace(/{min_group_price}/,jsObject.goods_search_response.goods_list[i].min_group_price/100).
+        		replace(/{sold_quantity}/,jsObject.goods_search_response.goods_list[i].sold_quantity).
+                replace(/{newmoney}/,(jsObject.goods_search_response.goods_list[i].min_group_price-jsObject.goods_search_response.goods_list[i].coupon_discount)/100).
+                replace(/{coupon_discount}/,jsObject.goods_search_response.goods_list[i].coupon_discount/100);
+        	}
+    	}          
+      // document.getElementById('content1').innerHTML = div;
+	//如果是第一次
+	if(isFirst){
+		if(index == 4){
+			index = index-1;
+		}
+		$(".list-group").eq(index).empty().append(div);
+		 mySwiper.update(); // 重新计算高度;
+	}else{
+		//$("#content1").append(div);
+		if(index == 4){
+			index = index-1;
+		}
+		
+		$(".list-group").eq(index).append(div);
+		 mySwiper.update(); // 重新计算高度;
+	}
+	console.log(index+"----"+$(".list-group").eq(index).children().length);
+	}
+	});
+}
+	
+	
+function GetRequest() {
+    var url = location.search; //获取url中"?"符后的字串
+    var theRequest = new Object();
+    if (url.indexOf("?") != -1) {
+        var str = url.substr(1);
+        strs = str.split("&");
+        for (var i = 0; i < strs.length; i++) {
+            theRequest[strs[i].split("=")[0]] = decodeURIComponent(strs[i].split("=")[1]);
+        }
+    }
+    return theRequest;
+}
+
+function getId(obj){
+    //alert($("#2500869495").text());
+    window.location.href = "./product.html?goods_id=["+obj.id+"]";
+}
+
+ 
+</script>
+</body>
+</html>

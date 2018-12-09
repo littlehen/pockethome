@@ -1,0 +1,494 @@
+<!DOCTYPE html> 
+<html> 
+<head lang="en"> 
+<meta charset="UTF-8"> 
+<title>9.9</title> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"> 
+<meta name="apple-mobile-web-app-capable" content="no"> 
+<meta name="apple-mobile-web-app-status-bar-style" content="black"> 
+<meta name="format-detection" content="telephone=no"> 
+<link rel="stylesheet" href="css/weui.css"/>
+<link rel="stylesheet" href="css/weui2.css"/>
+<link href="css/swiper.css" rel="stylesheet"/>
+<style> 
+.header { 
+	position: fixed;
+	z-index: 100;
+	top: 10px; 
+	height: 30px;
+	left: 0px;
+	width:100%;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #9F9F9F;
+	background-color: white;
+}
+.center{
+	width: 96%;
+	height: 30px;
+	margin: 0 auto;
+}
+.left{
+	height: 30px;
+	width: 6%;
+	float: left;
+	margin-left: 5px;
+	margin-top: 2px;
+}
+.left1{
+	height: 30px;
+	width: 14%;
+	float: left;
+	border-top-left-radius:8px; 
+	border-bottom-left-radius:8px;
+}
+.search{
+	height: 30px;
+	width: 75%;
+	float: left;
+}
+.s-btn{
+	height: 30px;
+	width: 10%;
+	background-color: #EEEEEE;
+	float: right;
+	text-align:center;
+	margin-bottom: 2px;
+	border-top-right-radius: 8px; 
+	border-bottom-right-radius:8px;
+	line-height: 30px;
+}
+#selectshop{
+	width: 60px;
+	height: 30px;
+	font-size: 10px;
+	color: orange;
+	border-top-left-radius:8px; 
+	border-bottom-left-radius:8px;
+}
+#idNumber1{ 
+	 /*清除select默认样式*/
+    appearance:none;
+    -moz-appearance:none;
+    -webkit-appearance:none;
+    -ms-appearance:none;
+    outline:0;
+    border-radius:0px;
+	width:90%; 
+	overflow:hidden; 
+	text-align:left; 
+	height:30px; 
+	border:0px  #ccc; 
+	float: left;
+	border-bottom: 1px solid #ccc;
+	border-top: 1px solid #ccc;
+} 
+select {
+    /*清除select默认样式*/
+    appearance:none;
+    -moz-appearance:none;
+    -webkit-appearance:none;
+    -ms-appearance:none;
+
+    border:1px solid #CCC;
+    width:330px;
+    height:44px;
+    /*自定义箭头的样式，记得背景一定要加 白色或其他*/
+    /*background:url("../img/select.png") no-repeat scroll right center #fff;*/
+    /*ie下,原默认的箭头样式还是会显示，所以这里把自定义的样式给去除了*/
+    background:#fff\9;
+    color:#666;
+    padding:8px;
+    outline:none;
+    line-height: 14px;
+}
+a {color: black;text-decoration: none;}
+a:hover,a:focus {color: #2a6496;text-decoration: underline;}
+a:focus {outline: thin dotted;outline: 5px auto -webkit-focus-ring-color;outline-offset: -2px;}
+		
+.a{text-align:center;line-height: 40px;position: fixed;top: 0;left: 0;width: 100%;z-index: 10;border-bottom: 1px #ccc solid; background: #f50;color: #fff;}
+.tab{display: flex;line-height: 40px;position: fixed;top: 50px;width: 100%;z-index: 10;border-bottom: 1px #ccc solid;background-color: white;}
+.tab a{width: 33.333333%;text-align: center;}
+.tab .active{border-bottom: 1px #f50 solid; color: #f50;}
+.panel{margin: 0;}
+
+.refreshtip {position: absolute;left: 0;width: 100%;margin: 10px 0;text-align: center;color: #999;}
+.swiper-container{overflow: hidden;margin-top: 100px;}
+.loadtip { display: block;width: 100%;line-height: 40px; height: 40px;text-align: center;color: #999;border-top: 1px solid #ddd;}
+.swiper-container, .w{height: calc(100vh - 120px);}
+.swiper-slide{height: auto;}
+
+.text-center{text-align: center;}
+.list-group{padding-left: 0;margin-bottom: 20px;}
+.list-group-item{   
+	width: 100%;
+	height: 120px;
+}
+.leftima{
+	width: 35%;
+	height: 100px;
+	float: left;
+}
+.leftima img{
+	width:100%;
+	height:100%;
+}
+.rightdiv{
+	width: 100%;
+}
+.rightdiv p{
+	font-size: 12px;
+}
+.updiv{
+	width: 100%;
+	height: 25px;
+	margin-top: 10px;
+}
+.downdiv{
+	width: 100%;
+	height: 25px;
+	margin-top: 5px;
+}
+.oldmoney {
+	float: left;
+	font-size: 12px;
+	color: #9F9F9F;
+}
+.xiaoliang {
+	float: right;
+	color: #9F9F9F;
+}
+.newmoney{
+	float: left;
+	line-height: 20px;
+	color: #C7414F;
+}
+.quan{
+	float: right;
+	text-align: center;
+	color: white;
+}
+#redbackgrounp{
+	float: right;
+	width: 80px;
+	height: 24px;
+	text-align: center;
+	background-image: url(images/quanback.jpg);
+	background-size: 75px;
+	background-repeat: no-repeat;
+}
+#redbackgrounp p{
+	width: 95%;
+	margin: 0 auto;
+	margin-top: 1px;
+	line-height: 22px;
+}
+.list-group-item:first-child {border-top-left-radius: 4px;border-top-right-radius: 4px;margin-top: 5px;}
+.list-group-item{
+	border-bottom: 1px solid #9F9F9F;
+}
+.downdiv p{
+	font-size: 18px;
+}
+.updiv p{
+	font-size: 12px;
+}
+.center p{
+	text-align: center;
+}
+</style> 
+</head> 
+<body> 
+	<div class="header">
+	<div class="center">
+		<a href="index.html" >
+			<div class="left">
+				<i class="iconfont">&#xe601;</i>
+			</div>
+		</a>
+		<p>9块9包邮专区</p>
+	</div>
+</div><!--//头部结束-->
+	
+	
+<div class="tab">
+		<a class="active" href="javascript:;">精选</a>
+		<a href="javascript:;">销量</a>
+		<a href="javascript:;">最新</a>
+		<a href="javascript:;">价格</a>
+	</div>
+	<div class="swiper-container">
+		<div class="swiper-wrapper w">
+			<div class="swiper-slide d">
+				<div class="init-loading list-group-item text-center" style="display: none;">下拉可以刷新</div>
+				<div class="swiper-container2">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide list-group">
+						<div class="list-group-item">
+							<div class="leftima">
+								<img src="images/img/cate_05.jpg" />
+							</div>
+							<div class="rightdiv">
+								<p class="pro_title">哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇</p>
+								<div class="updiv">
+									<p class="oldmoney"><s>￥40.0</s></p>
+									<p class="xiaoliang">232323人已买</p>
+								</div>
+								<div class="downdiv">
+									<p class="newmoney" >￥5.8</p>
+									<div id="redbackgrounp">
+										<p class="quan">35元券&nbsp;</p>
+									</div>
+									
+								</div>
+							</div>
+						</div>
+						<div class="list-group-item">
+							<div class="leftima">
+								<img src="images/img/cate_05.jpg" />
+							</div>
+							<div class="rightdiv">
+								<p class="pro_title">哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇</p>
+								<div class="updiv">
+									<p class="oldmoney"><s>￥40.0</s></p>
+									<p class="xiaoliang">232323人已买</p>
+								</div>
+								<div class="downdiv">
+									<p class="newmoney">￥5.8</p>
+									<div id="redbackgrounp">
+										<p class="quan">35元券&nbsp;</p>
+									</div>
+									
+								</div>
+							</div>
+						</div>
+						<div class="list-group-item">
+							<div class="leftima">
+								<img src="images/img/cate_05.jpg" />
+							</div>
+							<div class="rightdiv">
+								<p class="pro_title">哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇</p>
+								<div class="updiv">
+									<p class="oldmoney"><s>￥40.0</s></p>
+									<p class="xiaoliang">232323人已买</p>
+								</div>
+								<div class="downdiv">
+									<p class="newmoney">￥5.8</p>
+									<div id="redbackgrounp">
+										<p class="quan">35元券&nbsp;</p>
+									</div>
+									
+								</div>
+							</div>
+						</div>
+						<div class="list-group-item">
+							<div class="leftima">
+								<img src="images/img/cate_05.jpg" />
+							</div>
+							<div class="rightdiv">
+								<p class="pro_title">哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇</p>
+								<div class="updiv">
+									<p class="oldmoney"><s>￥40.0</s></p>
+									<p class="xiaoliang">232323人已买</p>
+								</div>
+								<div class="downdiv">
+									<p class="newmoney">￥5.8</p>
+									<div id="redbackgrounp">
+										<p class="quan">35元券&nbsp;</p>
+									</div>
+									
+								</div>
+							</div>
+						</div>
+						
+					</div>
+					<div class="swiper-slide list-group">
+						<div class="list-group-item">
+							<div class="list-group-item">
+							<div class="leftima">
+								<img src="images/img/cate_05.jpg" />
+							</div>
+							<div class="rightdiv">
+								<p class="pro_title">哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇</p>
+								<div class="updiv">
+									<p class="oldmoney"><s>￥40.0</s></p>
+									<p class="xiaoliang">232323人已买</p>
+								</div>
+								<div class="downdiv">
+									<p class="newmoney">￥5.8</p>
+									<div id="redbackgrounp">
+										<p class="quan">35元券&nbsp;</p>
+									</div>
+									
+								</div>
+							</div>
+						</div>
+						</div>
+						
+					</div>
+					<div class="swiper-slide list-group">
+						<div class="list-group-item">
+							<div class="list-group-item">
+							<div class="leftima">
+								<img src="images/img/cate_05.jpg" />
+							</div>
+							<div class="rightdiv">
+								<p class="pro_title">哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇</p>
+								<div class="updiv">
+									<p class="oldmoney"><s>￥40.0</s></p>
+									<p class="xiaoliang">232323人已买</p>
+								</div>
+								<div class="downdiv">
+									<p class="newmoney">￥5.8</p>
+									<div id="redbackgrounp">
+										<p class="quan">35元券&nbsp;</p>
+									</div>
+									
+								</div>
+							</div>
+						</div>
+						</div>
+						
+					</div>
+					<div class="swiper-slide list-group">
+						<div class="list-group-item">
+							<div class="list-group-item">
+							<div class="leftima">
+								<img src="images/img/cate_05.jpg" />
+							</div>
+							<div class="rightdiv">
+								<p class="pro_title">哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇</p>
+								<div class="updiv">
+									<p class="oldmoney"><s>￥40.0</s></p>
+									<p class="xiaoliang">232323人已买</p>
+								</div>
+								<div class="downdiv">
+									<p class="newmoney">￥5.8</p>
+									<div id="redbackgrounp">
+										<p class="quan">35元券&nbsp;</p>
+									</div>
+									
+								</div>
+							</div>
+						</div>
+						</div>
+						
+					</div>
+				</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="swiper-scrollbar"></div>
+	</div>
+
+
+<!--清空历史记录--> 
+<script src="js/jquery-3.1.0.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/swiper.js" type="text/javascript" charset="utf-8"></script>
+<script> 
+var loadFlag = true;
+	var oi = 0;
+	var mySwiper = new Swiper('.swiper-container',{
+		direction: 'vertical',
+		scrollbar: '.swiper-scrollbar',
+		slidesPerView: 'auto',
+		mousewheelControl: true,
+		freeMode: true,
+		onTouchMove: function(swiper){		//手动滑动中触发
+			var _viewHeight = document.getElementsByClassName('swiper-wrapper')[0].offsetHeight;
+            var _contentHeight = document.getElementsByClassName('swiper-slide')[0].offsetHeight;
+            
+            
+            if(mySwiper.translate < 50 && mySwiper.translate > 0) {
+				$(".init-loading").html('下拉刷新...').show();
+			}else if(mySwiper.translate > 50 ){
+				$(".init-loading").html('释放刷新...').show();
+			}
+		},
+		onTouchEnd: function(swiper) {
+			var _viewHeight = document.getElementsByClassName('swiper-wrapper')[0].offsetHeight;
+            var _contentHeight = document.getElementsByClassName('swiper-slide')[0].offsetHeight;
+             // 上拉加载
+            if(mySwiper.translate <= _viewHeight - _contentHeight - 50 && mySwiper.translate < 0) {
+                // console.log("已经到达底部！");
+               
+                if(loadFlag){
+                	$(".loadtip").html('正在加载...');
+                }else{
+                	$(".loadtip").html('没有更多啦！');
+                }
+                
+                setTimeout(function() {
+                    for(var i = 0; i <5; i++) {
+                    	oi++;
+                        $(".list-group").eq(mySwiper2.activeIndex).append('<div class="list-group-item">'+
+							'<div class="leftima">'+
+							'	<img src="images/img/cate_05.jpg" />'+
+							'</div>'+
+							'<div class="rightdiv">'+
+								'<p class="pro_title">哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇</p>'+
+								'<div class="updiv">'+
+									'<p class="oldmoney"><s>￥40.0</s></p>'+
+									'<p class="xiaoliang">232323人已买</p>'+
+								'</div>'+
+								'<div class="downdiv">'+
+									'<p class="newmoney">￥5.8</p>'+
+									'<div id="redbackgrounp">'+
+										'<p class="quan">35元券&nbsp;</p>'+
+									'</div>'+
+									
+								'</div>'+
+							'</div>'+
+						'</div>');
+                    }
+                     $(".loadtip").html('上拉加载更多...');
+                    mySwiper.update(); // 重新计算高度;
+                }, 800);
+            }
+            
+            // 下拉刷新
+            if(mySwiper.translate >= 50) {
+                $(".init-loading").html('正在刷新...').show();
+                $(".loadtip").html('上拉加载更多');
+                loadFlag = true;
+                
+                setTimeout(function() {
+                    $(".refreshtip").show(0);
+                    $(".init-loading").html('刷新成功！');
+                    setTimeout(function(){
+                    	$(".init-loading").html('').hide();
+                    },800);
+                    $(".loadtip").show(0);
+                    
+                    //刷新操作
+                    mySwiper.update(); // 重新计算高度;
+                }, 1000);
+            }else if(mySwiper.translate >= 0 && mySwiper.translate < 50){
+            	$(".init-loading").html('').hide();
+            }
+            return false;
+		}
+	});
+	var mySwiper2 = new Swiper('.swiper-container2',{
+		onTransitionEnd: function(swiper){
+			
+			$('.w').css('transform', 'translate3d(0px, 0px, 0px)')
+			$('.swiper-container2 .swiper-slide-active').css('height','auto').siblings('.swiper-slide').css('height','0px');
+			mySwiper.update();
+			
+			$('.tab a').eq(mySwiper2.activeIndex).addClass('active').siblings('a').removeClass('active');
+		}
+		
+	});
+	$('.tab a').click(function(){
+		
+		$(this).addClass('active').siblings('a').removeClass('active');
+		mySwiper2.slideTo($(this).index(), 500, false)
+		
+		$('.w').css('transform', 'translate3d(0px, 0px, 0px)')
+		$('.swiper-container2 .swiper-slide-active').css('height','auto').siblings('.swiper-slide').css('height','0px');
+		mySwiper.update();
+	});
+</script> 
+</body> 
+</html> 

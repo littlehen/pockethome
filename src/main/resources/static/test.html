@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Swiper中文网基础演示(www.swiper.com.cn)</title>
+<link rel="stylesheet" href="css/idangerous.swiper.css">
+<script src="js/swiper.js"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+}
+.blue-slide {
+    background: #4390EE;
+}
+.red-slide {
+    background: #CA4040;
+}
+.orange-slide {
+    background: #FF8604;
+}
+.swiper-slide {
+    line-height: 300px;
+    color: #fff;
+    font-size: 36px;
+    text-align: center;
+}
+.loops{
+    width: 120px;
+    height:120px;
+    background: #4390EE;
+}
+</style>
+</head>
+<body>
+<div class="swiper-container">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide blue-slide" data-color="#4390EE">slider1</div>
+    <div class="swiper-slide red-slide" data-color="#CA4040">slider2</div>
+    <div class="swiper-slide orange-slide" data-color="#FF8604">slider3</div>
+  </div>
+</div>
+<div class="loops">自定义nav_bar</div>
+<script type="text/javascript">
+  var mySwiper = new Swiper('.swiper-container',{
+    loop: true,
+        autoplay: 3000,
+        
+        
+        
+  }); 
+  mySwiper.params.onSlideChangeEnd = function(){
+        	 console.log(mySwiper.activeIndex)
+            var slide = mySwiper.getSlide(mySwiper.activeIndex);
+            console.log(slide)
+            console.log(slide.data('color'))
+            $('.loops').css({
+                'background': slide.data('color')
+            })
+        	
+			
+		};
+</script>
+</body>
+</html>

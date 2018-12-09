@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="telephone=no" name="format-detection">
+<meta content="no-cache" http-equiv="Cache-Control">
+<title>商品详情</title>
+<link href="css/shopin.css" rel="stylesheet"/>
+<link href="css/swiper.css" rel="stylesheet"/>
+<style type="text/css">
+.d-main1{
+	width: 100%;
+	height: 30px;
+	margin-top: 5px;
+}
+#redbackgrounp1{
+	float: right;
+	width: 80px;
+	height: 24px;
+	text-align: center;
+	background-image: url(images/quanback.jpg);
+	background-size: 75px;
+	background-repeat: no-repeat;
+	margin-right: 10px;
+}
+.quan1{
+	text-align: center;
+	color: white;
+	line-height: 22px;
+	
+}
+.d{
+	width: 100%;
+	height: 120px;
+}
+
+.tuijianyu1{
+	margin-top:10px;
+	font-size:13px;
+	background-color:white;
+	padding:10px 10px;
+}
+.tuijianyu1 span{
+	font-size:16px;
+	color:#C7414F;
+}
+#shop_dec{
+	width:100%;
+	height:80px;
+	margin-top:10px;
+	background-color:white;
+	vertical-align:middle;
+}
+.dianpu1{
+	width:95%;
+	margin:0px auto;
+	padding-top:15px;
+}
+.dianpu1 p{
+	font-size:14px;
+}
+.mainDiv {
+    width: 100%;
+    height: 30px;
+    background-color: white;
+
+}
+.viceDiv_1,.viceDiv_2,.viceDiv_3 {
+    float: left;
+    padding-top: 2% ;
+    padding-left: 0.5%;
+    width: 32.7%;
+    height: auto;  
+}
+#contbox{
+	
+}
+</style>
+</head>
+
+<body>
+<div class="m-detail">
+	<div class="slide-banner">
+	    <div class="swiper-wrapper" id="lunbo">
+	    </div>
+	    <div class="swiper-pagination"></div>
+		<a href="javascript:;" class="a-back"></a>
+		<a href="javascript:;" class="a-cart"></a>
+	</div><!-- //焦点图结束 -->
+
+	<div id = "goodxiangqing">
+	
+	</div>												
+
+	<div id="good_des">
+		
+	</div>
+	
+	<div id="shop_dec">
+		
+	</div>
+
+</div>
+
+<div class="buy-bar buy-fixed flex">
+	<a class="add-cart cell" href="javascript:showit();">分享</a>
+	<a class="buy-now cell" href="javascript:buyNow();">抢券购买</a>
+</div>
+
+
+<script type="text/html" id = "lunbotu">
+	<div class="swiper-slide"><img src="{imgurl}"></div>
+</script>
+
+<script type="text/html" id = "xiangqing">
+	<div class="d">
+		<h3 class="d-title clamp">{goods_name}</h3>
+		<div class="d-main1">
+			<p style="font-size: 20px;color: #C7414F;float: left;margin-left: 8px;line-height: 20px" >￥{newmoney}</p>
+			<p style="font-size: 12px;margin-left: 16px;float: left;line-height: 20px;">￥{min_group_price}</p>
+			<p style="font-size: 12px;float: right;margin-right: 15px;">已售{sold_quantity}件</p>	
+		</div>
+		<div id="redbackgrounp1">
+			<p class="quan1">{coupon_discount}元券&nbsp;</p>			
+		</div>
+	</div>
+</script>
+
+<script type="text/html" id = "tuijianyu">
+	<div class="tuijianyu1"><span>推荐语:</span>{tuijianyu}</div>
+</script>
+
+<script type="text/html" id = "dianpu">
+	<div class="dianpu1">
+			<p>{mall_name}</p>
+			<div class="mainDiv" >
+				<div class="viceDiv_1">宝贝描述:{avg_desc}分</div>
+				<div class="viceDiv_2" align="center">卖家服务:{avg_serv}分</div>
+				<div class="viceDiv_3" align="right">物流服务:{avg_lgst}分</div>
+			</div>
+
+	</div>
+</script>
+
+<script src="js/jquery-3.1.0.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdn.bootcss.com/html2canvas/0.4.1/html2canvas.js"></script> 
+<script src="js/zepto.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/swiper.js" type="text/javascript" charset="utf-8"></script>
+<!-- <script src="js/shopin.js"></script> -->
+<script>
+var title1 = "";
+var yuanjia = "";
+var xianjia = "";
+var yuanhuiquan = "";
+var lunbotu1 = "";
+var a=GetRequest();
+var goods_id=a['goods_id'];
+//参数初始化
+window.onload = function () {
+	 
+	$.ajax({
+		url : "./getGoodDetail",
+		async : true,
+		type : "post",
+		dataType:'JSON',
+		data : {"goods_id_list":goods_id},
+		success : function(result) {
+			var jsonString = JSON.stringify(result);// 转成JSON格式
+	    	var jsObject = JSON.parse(jsonString);
+	    	//console.log(jsObject.goods_detail_response.goods_details[0].goods_gallery_urls);
+			var div = "";
+	    	if(jsObject.goods_detail_response.goods_details[0].goods_gallery_urls.length > 0){
+	    		for(var i = 0;i < jsObject.goods_detail_response.goods_details[0].goods_gallery_urls.length; i++){
+	        		div += lunbotu.innerHTML.
+	        		replace(/{imgurl}/,jsObject.goods_detail_response.goods_details[0].goods_gallery_urls[i]);
+	        	}
+	    	}     
+	    	
+	    	var div1 = "";
+	    		div1 += xiangqing.innerHTML.
+        		replace(/{goods_name}/,jsObject.goods_detail_response.goods_details[0].goods_name).
+        		replace(/{min_group_price}/,jsObject.goods_detail_response.goods_details[0].min_group_price/100).
+        		replace(/{sold_quantity}/,jsObject.goods_detail_response.goods_details[0].sold_quantity).
+                replace(/{newmoney}/,(jsObject.goods_detail_response.goods_details[0].min_group_price-jsObject.goods_detail_response.goods_details[0].coupon_discount)/100).
+                replace(/{coupon_discount}/,jsObject.goods_detail_response.goods_details[0].coupon_discount/100);
+	    		
+    		var div2 = "";
+	    		div2 += tuijianyu.innerHTML.
+	       		replace(/{tuijianyu}/,jsObject.goods_detail_response.goods_details[0].goods_desc);
+	    		
+    		var div3 = "";
+   				div3 += dianpu.innerHTML.
+      			replace(/{mall_name}/,jsObject.goods_detail_response.goods_details[0].mall_name).
+      			replace(/{avg_desc}/,(jsObject.goods_detail_response.goods_details[0].avg_desc)/100).
+      			replace(/{avg_serv}/,(jsObject.goods_detail_response.goods_details[0].avg_serv)/100).
+      			replace(/{avg_lgst}/,(jsObject.goods_detail_response.goods_details[0].avg_lgst)/100);
+	        	 
+	       document.getElementById('lunbo').innerHTML = div;
+	       document.getElementById('goodxiangqing').innerHTML = div1;
+	       document.getElementById('good_des').innerHTML = div2;
+	       document.getElementById('shop_dec').innerHTML = div3;
+	       
+	       title1 = jsObject.goods_detail_response.goods_details[0].goods_name;
+	       yuanjia = jsObject.goods_detail_response.goods_details[0].min_group_price/100;
+	       xianjia = (jsObject.goods_detail_response.goods_details[0].min_group_price-jsObject.goods_detail_response.goods_details[0].coupon_discount)/100;
+	       youhuiquan = jsObject.goods_detail_response.goods_details[0].coupon_discount/100;
+	       lunbotu1 = jsObject.goods_detail_response.goods_details[0].goods_gallery_urls[0];
+	       
+	     //焦点图
+	       var mySwiper = new Swiper ('.slide-banner', {
+	       	pagination: '.swiper-pagination',
+	           autoplay: 3000,
+	           autoplayDisableOnInteraction: false
+	       });
+		}
+	});
+   
+};
+//显示图片详情
+$('.view-picture').on('tap', function(event) {
+	$(this).hide();
+	$('.pic-text').show();
+});
+
+function buyNow() {
+	
+};
+
+
+
+function GetRequest() {
+    var url = location.search; //获取url中"?"符后的字串
+    var theRequest = new Object();
+    if (url.indexOf("?") != -1) {
+        var str = url.substr(1);
+        strs = str.split("&");
+        for (var i = 0; i < strs.length; i++) {
+            theRequest[strs[i].split("=")[0]] = decodeURIComponent(strs[i].split("=")[1]);
+        }
+    }
+    return theRequest;
+}
+
+function showit(){
+	$.ajax({
+		url : "./generatePUrl",
+		type : "post",
+		dataType:'JSON',
+		data : {"goods_id_list":goods_id},
+		success : function(result) {
+			var jsonString = JSON.stringify(result);// 转成JSON格式
+	    	var jsObject = JSON.parse(jsonString);	
+	    	window.location.href = "./showit.html?title="+title1+"&yuanjia="+yuanjia+"&xianjia="+xianjia+"&youhuiquan="+youhuiquan+"&lunbotu1="+lunbotu1+"&shorturl="+jsObject.goods_promotion_url_generate_response.goods_promotion_url_list[0].short_url;
+		}
+	});
+	
+}
+</script>
+</body>
+</html>
