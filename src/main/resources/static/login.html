@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>登陆</title>
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<meta content="black" name="apple-mobile-web-app-status-bar-style">
+	<meta content="telephone=no" name="format-detection">
+	<meta content="no-cache" http-equiv="Cache-Control">
+	<link rel="stylesheet" href="css/weui2.css"/>
+  <link href="css/login.css" type="text/css" rel="stylesheet"/>
+ <style type="text/css">
+ 	/*底部*/
+.footer{
+	z-index: 9999;
+}
+.footer .weui_tabbar .weui_tabbar_item .icon {
+  display: block;
+  height: 100px;
+  width: 100%;
+  font-size: 26px;
+  line-height: 25px;
+  z-index: 9999;
+}
+.shop-cart {
+  height: 76px;
+  width: 70px;
+  margin: 0 auto;
+  position:fixed;
+  left:0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  /*background: darkcyan;*/
+}
+
+.shop-cart .cart {
+  height: 45px;
+  width: 45px;
+  margin: 0 auto;
+  display: block;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+}
+.shop-cart .cart .c-icon {
+  height: 33px;
+  width: 33px;
+  margin: 0 auto;
+  margin-top: 5px;
+  border-radius: 50%;
+}
+.shop-cart .cart .c-icon .icon {
+  height: 40px;
+  width: 100%;
+  font-size: 36px;
+  color: #ffffff;
+  display: block;
+  text-align: center;
+}
+.shop-cart .cart .c-txt {
+  height: 22px;
+  width: 100%;
+  line-height: 25px;
+  color: #9E9E9F;
+  font-size: 15px;
+  display: block;
+  text-align: center;
+}
+.iconfont1{
+	 background-color: white;
+	 font-size:44px;
+	 color: #FDD502;
+	 border-radius: 38px;
+}
+.weui_tabbar {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #f7f7fa;
+  z-index: 100;
+}
+.weui_tabbar:before {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 1px;
+  border-top: 1px solid #979797;
+  color: #979797;
+  -webkit-transform-origin: 0 0;
+          transform-origin: 0 0;
+  -webkit-transform: scaleY(0.5);
+          transform: scaleY(0.5);
+}
+.weui_tabbar_item {
+  display: block;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  padding: 7px 0 0;
+  -webkit-tap-highlight-color: transparent;
+}
+.weui_tabbar_item.weui_bar_item_on .weui_tabbar_label {
+  color: #888;
+}
+.weui_tabbar_label1{
+	text-align: center;
+	color: #888;
+    font-size: 12px;
+	color: #FDD502;
+}
+.weui_tabbar_icon {
+  margin: 0 auto;
+  width: 26px;
+  height: 26px;
+  text-align: center;
+  color: #888;
+}
+.weui_tabbar_icon1 {
+  margin: 0 auto;
+  width: 26px;
+  height: 26px;
+  text-align: center;
+  color: #FDD502;
+}
+.weui_tabbar_icon img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.weui_tabbar_icon + .weui_tabbar_label {
+  margin-top: 0px;
+}
+.weui_tabbar_label {
+  text-align: center;
+  color: #888;
+  font-size: 12px;
+}
+ </style>
+  </head>
+  <body>
+    <div id="base" >
+
+	<footer class="footer weui_tab tab-bottom" style="height:60px;">
+	    <nav class="weui_tabbar" style="height:60px;">
+	      <a href="index.html" class="weui_tabbar_item weui_bar_item_on">
+	        <div class="weui_tabbar_icon">
+	          <i class="iconfont">&#xe600;</i>
+	        </div>
+	        <p class="weui_tabbar_label" >首页</p>
+	      </a>
+	      <a href="mysearch.html" class="weui_tabbar_item">
+	        <div class="weui_tabbar_icon">
+	          <i class="iconfont">&#xe640;</i>
+	        </div>
+	        <p class="weui_tabbar_label">搜索</p>
+	      </a>
+	      <a href="javascript:;" class="weui_tabbar_item"></a>
+	      <a href="nine.html" class="weui_tabbar_item">
+	        <div class="weui_tabbar_icon">
+	          <i class="iconfont">&#xe6bf;</i>
+	        </div>
+	        <p class="weui_tabbar_label">特惠</p>
+	      </a>
+	      <a href="vip.html" class="weui_tabbar_item">
+	        <div class="weui_tabbar_icon1">
+	          <i class="iconfont" style="margin-left: 1.5px;">&#xe63f;</i>
+	        </div>
+	        <p class="weui_tabbar_label1" style="margin-top: 0px;">我的</p>
+	      </a>
+	    </nav>
+	  </footer>
+  <div class="shop-cart">
+    <a id="cart" href="makemoney.html" class="cart" style="color: white;">
+      
+        <i class="iconfont iconfont1" >&#xe69a;</i>
+    
+      <!--<p class="c-txt">购物车</p>-->
+    </a>
+  </div><!-- //底部导航结束 -->
+  
+      <!-- Unnamed (矩形) -->
+      <div id="u17" >
+      	<div class="img" ><img src=""></div>
+      	<p><span >XXX</span></p>
+      </div>
+
+      <!-- Unnamed (矩形) -->
+      <div id="u18" >
+        <div id="u18_div" >
+        	<div id="u18_top">
+        		<div id="u18_top_left">
+        			 <p><span>可提现金额 </span><span id="qian">¥ XX</span></p>
+        		</div>
+        		 <!-- Unnamed (矩形) -->
+		        <div id="u33" >
+		          <div id="u33_div" class="">
+		          	<p><span>立即提现</span></p>
+		          </div>
+		        </div>
+        		
+        	</div>
+        	<!-- Unnamed (垂直线) -->
+		    <img id="u30_img" src="images/login/u30.png"/>
+        	<div id="u18_bottom">
+        		<div class="u18_bottom_1">
+        			<p class="u18_bottom_11"><span >¥ XX</span></p>
+        			<p class="u18_bottom_12"><span >本月佣金</span></p>
+        		</div>
+        		<!-- Unnamed (垂直线) -->
+					  <img id="u18_img" class="img" src="images/login/u31.png"/>
+        		<div class="u18_bottom_1">
+        			<p class="u18_bottom_11"><span >¥ XX</span></p>
+        			<p class="u18_bottom_12"><span >今日佣金</span></p>
+        		</div>
+        		<!-- Unnamed (垂直线) -->
+			      <img id="u18_img" class="img " src="images/login/u31.png"/>
+        		<div class="u18_bottom_1">
+        			<p class="u18_bottom_11"><span >0</span></p>
+        			<p class="u18_bottom_12"><span >团队成员</span></p>
+        		</div>
+        	</div>
+        </div>
+      </div>
+
+
+			<div id="u42" >
+	        <div id="u42_div" >
+	        	<img src="images/login/u43.png"/>
+	        	<p><span>超级店长 专属特权</span></p>
+	        </div>
+      </div>
+
+		<div id="div1">
+			<div id="u47all">
+							<div id="u47" >
+					       <img id="u47_img" class="img " src="images/login/u47.png"/>
+					       <p><span>订单</span></p>
+					    </div>
+					     <div id="u47" >
+					       <img id="u47_img" class="img " src="images/login/u47.png"/>
+					       <p><span>收益</span></p>
+					     </div>
+					     <div id="u47" >
+					       <img id="u47_img" class="img " src="images/login/u47.png"/>
+					       <p><span>团队</span></p>
+					     </div>
+					     <div id="u47" >
+					       <img id="u47_img" class="img " src="images/login/u47.png"/>
+					       <p><span>邀请</span></p>
+					     </div>
+					</div>
+		</div>
+			
+				 			
+		<div id="div2">
+			<div id="u55all">
+						<div id="u55" class="ax_default image">
+			        <img id="u55_img" class="img " src="images/login/u55.png"/>
+			      </div>
+			      <div id="u55" class="ax_default image">
+			        <img id="u55_img" class="img " src="images/login/u55.png"/>
+			      </div>
+			      <div id="u55" class="ax_default image">
+			        <img id="u55_img" class="img " src="images/login/u55.png"/>
+			      </div>
+			      <div id="u55" class="ax_default image">
+			        <img id="u55_img" class="img " src="images/login/u55.png"/>
+			      </div>
+					</div>
+		</div>
+
+		<div id="u66" >
+        <div id="u66_div" >
+        	<div id="u66_left" >
+		        <img  src="images/login/u11.png"/>
+		    </div>
+        	<p><span>常见问题</span></p>
+        </div>
+      </div>
+      
+      <div id="u67" >
+        <div id="u67_div" >
+        	<div id="u66_left" >
+		        <img   src="images/login/u11.png"/>
+		    </div>
+        	<p><span>关于我们</span></p>
+        </div>
+      </div>
+      
+      <div id="u68" >
+        <div id="u68_div" >
+        	<div id="u66_left" >
+		        <img   src="images/login/u11.png"/>
+		    </div>
+        	<p><span>联系客服</span></p>
+        </div>
+      </div>
+
+
+
+      
+
+     
+    </div>
+  </body>
+</html>

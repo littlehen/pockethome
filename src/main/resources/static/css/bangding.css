@@ -1,0 +1,128 @@
+﻿
+body {
+    font-family: "microsoft yahei";
+}
+
+.mui-bar {
+    background: #007aff;
+}
+
+.mui-bar h1 {
+    color: #FFFFFF;
+    /*line-height: 47px;*/
+    font-size: 16px;
+}
+
+.mui-bar a {
+    color: #FFFFFF;
+}
+
+.mui-bar span {
+    font-size: 14px;
+    color: #FFFFFF;
+    line-height: 44px;
+}
+
+.mui-input-group {
+    margin: 20px;
+    background: transparent;
+}
+
+.mui-input-row {
+    background: #FFFFFF;
+    margin-bottom: 14px;
+    border-radius: 5px;
+}
+
+.mui-input-group:before,
+.mui-input-group:after {
+    height: 0;
+}
+
+.mui-input-group .mui-input-row:after {
+    top: -28px;
+    left: 0px;
+    width: 3px;
+    height: 91px;
+    background-color: #FF6600;
+}
+
+.mui-input-group .mui-input-row i {
+    float: left;
+    line-height: 40px;
+    font-size: 20px;
+    padding: 0 10px;
+    color: #478bdd;
+}
+
+.mui-input-group .mui-input-row input {
+    font-family: "microsoft yahei";
+    width: 80%;
+    padding: 10px 15px 10px 0;
+}
+
+.code {
+    width: 50% !important;
+}
+
+#btn_send {
+    float: right;
+    color: #007aff;
+    line-height: 40px;
+    font-size: 14px;
+    width: 30%;
+    /*background: red;*/
+    cursor: pointer;
+    padding: 0;
+    padding-right: 2px;
+}
+
+.mui-input-group .mui-input-row span {
+    height: 0 !important;
+    display: none !important;
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+    color: #b5b5b5;
+    font-size: 15px;
+}
+
+input:-moz-placeholder,
+textarea:-moz-placeholder {
+    color: #b5b5b5;
+    font-size: 15px;
+}
+
+input::-moz-placeholder,
+textarea::-moz-placeholder {
+    color: #b5b5b5;
+    font-size: 15px;
+}
+
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+    color: #b5b5b5;
+    font-size: 15px;
+}
+
+.mui-btn {
+    padding: 10px;
+    border: none;
+    width: 90%;
+    border-radius: 5px;
+}
+
+
+.mui-btn-primary:enabled:active {
+    border: none;
+}
+
+
+.mui-content .mui-input-group {
+    display: none;
+}
+
+.mui-content .mui-input-group:first-child {
+    display: block;
+}
