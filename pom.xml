@@ -6,7 +6,7 @@
 	<groupId>com.yueqian</groupId>
 	<artifactId>pockethome</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>pockethome</name>
 	<description>Demo project for Spring Boot</description>
