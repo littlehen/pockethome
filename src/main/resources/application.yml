@@ -3,7 +3,7 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://47.107.131.74:3306/pockethome?useUnicode=true&characterEncoding=UTF-8
     username: root
-    password: !Wjj123==
+    password: "!Wjj123=="
     type: com.alibaba.druid.pool.DruidDataSource
     initialSize: 5
     minIdle: 5
