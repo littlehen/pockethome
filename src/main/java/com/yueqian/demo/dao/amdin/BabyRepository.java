@@ -12,11 +12,11 @@ import com.yueqian.demo.model.admin.Baby;
 public interface BabyRepository extends CrudRepository<Baby,Integer>{
 
 	@Modifying
-	@Query(nativeQuery = true,value = "SELECT   *   FROM   Baby limit ?1,?2 ") 
+	@Query(nativeQuery = true,value = "SELECT   *   FROM   baby limit ?1,?2 ") 
 	List<Baby> queryAllDataFromTable(int page, int limit);
 
 	@Modifying
-	@Query(nativeQuery = true,value = "SELECT   *   FROM   Baby") 
+	@Query(nativeQuery = true,value = "SELECT   *   FROM   baby") 
 	List<Baby> findAllList();
 
 }
