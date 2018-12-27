@@ -24,7 +24,7 @@ import com.alibaba.druid.support.http.WebStatFilter;
 @SpringBootApplication
 @ServletComponentScan
 @EnableCaching
-public class PockethomeApplication //extends SpringBootServletInitializer 
+public class PockethomeApplication extends SpringBootServletInitializer 
 {
 	
 	@Value("${druid.loginUsername}")
@@ -61,11 +61,11 @@ public class PockethomeApplication //extends SpringBootServletInitializer
 		return frbean;
 		
 	}
-//	@Override
-//	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-//		// TODO Auto-generated method stub
-//		return builder.sources(PockethomeApplication.class);
-//	}
+	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+		// TODO Auto-generated method stub
+		return builder.sources(PockethomeApplication.class);
+	}
 	
 	public static void main(String[] args) {
 		SpringApplication.run(PockethomeApplication.class, args);
