@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<meta content="telephone=no" name="format-detection">
+		<meta content="no-cache" http-equiv="Cache-Control">
+		<title>订单列表</title>
+		<link rel="stylesheet" href="css/weui2.css"/>
+		<link rel="stylesheet" type="text/css" href="css/orderlist.css"/>
+	</head>
+	<body>
+		<div class="top_search">
+			<div class="search">
+				<form action="" id="form1">
+					<input type="search" id="idNumber1" autocomplete="off" placeholder="输入订单号，查询订单" autosave="unique">
+					<i class="iconfont s-btn" id="search">&#xe640;</i>
+				</form>
+			</div>
+		</div>
+		<div class="menuone" id="">
+			<div class="menuone1">
+				<div class="menuone_left">
+					我的订单
+				</div>
+				<div class="menuone_right">
+					团队贡献订单
+				</div>
+			</div>
+		</div>
+		
+		<div class="menutwo">
+			<div id="menutwo1">
+	    		<div class="u18_bottom_1" id="u18_bottom_1">
+	    			所有订单
+	    		</div>
+	    		<div class="u18_bottom_1" id="u18_bottom_2">
+	    			有效订单
+	    		</div>
+	    		<div class="u18_bottom_1">
+	    			失效订单
+	    		</div>
+	    	</div>
+		</div>
+		
+		<div class="menutree" id="menutree">
+			<div class="menutree1">
+	    		<div class="menutree1_1" id="menutree1_1">
+	    			<div id="menutree1_11">
+	    				全部
+	    			</div>
+	    		</div>
+	    		<div class="menutree1_1">
+	    			<div id="menutree1_2">
+	    				已付款
+	    			</div>
+	    		</div>
+	    		<div class="menutree1_1">
+	    			<div id="menutree1_3">
+	    				已结算
+	    			</div>
+	    		</div>
+	    	</div>
+		</div>
+		
+		<script src="js/jquery-3.1.0.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquerysession.js"></script>
+		<script type="text/javascript">
+			var bb = document.getElementById("u18_bottom_2");
+	        var aa = document.getElementById("menutree");
+	        var b1 = true;
+	        bb.onclick = function () {
+	            if (b1) {
+	                aa.style.height='40px';
+	                b1 = false;
+	            } else {
+	                aa.style.height = '0'
+	                b1 = true;
+	            }
+	        }
+		</script>
+	</body>
+</html>

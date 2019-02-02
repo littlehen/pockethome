@@ -1,0 +1,36 @@
+.allcenter{
+	width: 80%;
+    height: 70%;
+    position:absolute;
+    left:0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+}
+.imgdiv{
+	width: 100%;
+    height: 80px;
+}
+.img{
+	width: 5rem;
+    height: 5rem;
+    border-radius: 100%;
+    vertical-align: middle;
+    margin: 0 auto;
+    background-color:white;
+}
+.textdiv{
+	width: 100%;
+    height: 30px;
+	margin: 30px auto;
+	text-align: center;
+	color: #CCCCCC;
+}
+.textdiv p{
+	font-size: 18px;
+}
+.textred{
+	color: red;
+	font-size: 19px;
+}

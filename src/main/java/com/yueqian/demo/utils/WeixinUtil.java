@@ -12,7 +12,10 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSocketFactory;
@@ -28,7 +31,14 @@ import org.springframework.stereotype.Component;
 import net.sf.json.JSONException;
 import net.sf.json.JSONObject;
 
+import com.pdd.pop.ext.apache.http.client.ClientProtocolException;
+import com.yueqian.demo.dao.weichattemplate.AccessTokenRepository;
 import com.yueqian.demo.dao.weichattemplate.WeichatAccessTokenRepository;
+import com.yueqian.demo.model.menu.Button;
+import com.yueqian.demo.model.menu.ClickButton;
+import com.yueqian.demo.model.menu.Menu;
+import com.yueqian.demo.model.menu.ViewButton;
+import com.yueqian.demo.model.weichattemplate.AccessToken;
 import com.yueqian.demo.model.weichattemplate.WeichatAccessTokenEntity;
 
 /**
@@ -44,15 +54,7 @@ public class WeixinUtil {
     @Autowired
     WeichatAccessTokenRepository weichatAccessTokenRepository;
 
-    @Value("${weichat.appid}")
-    String appid;
-
-    @Value("${weichat.appsecret}")
-    String appsecret;
-
-    @Value("${weichat.accesstoken}")
-    String accesstoken;
-	
+    private static String CREATE_MENU_URL = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ACCESS_TOKEN";
 	/**
      * 发起https请求并获取结果
      *
@@ -159,34 +161,179 @@ public class WeixinUtil {
         }
         
         return result;
-    }    
-   @Scheduled(initialDelay = 500, fixedDelay = 100*60*1000)
-    public void get_access_token() {
-        try {
-            WeichatAccessTokenEntity weichatAccessToken = new WeichatAccessTokenEntity();
-            String requestUrl = accesstoken;
-            requestUrl = requestUrl.replace("APPID",appid).replace("APPSECRET",appsecret);
-            JSONObject jsonObject = httpRequest(requestUrl,"GET",null);
-            if(jsonObject.getString("access_token")!=null){
-                System.out.println(jsonObject.getString("access_token"));
-                System.out.println(jsonObject.getInt("expires_in"));
-                weichatAccessToken = weichatAccessTokenRepository.findByAppid(appid);
-                if(weichatAccessToken == null){
-                    weichatAccessToken.setAccessToken(jsonObject.getString("access_token"));
-                    weichatAccessToken.setExpiresIn(jsonObject.getInt("expires_in"));
-                    weichatAccessToken.setAppid(appid);
-                }else{
-                    weichatAccessToken.setAccessToken(jsonObject.getString("access_token"));
-                }
-                weichatAccessTokenRepository.save(weichatAccessToken);
-            }
-            else{
-                log.error("定时获取token失败 errcode:{} errmsg:{}",jsonObject.getInt("errcode"), jsonObject.getString("errmsg"));
-            }
-        }
-        catch (Exception e){
-            log.info("更新access_token的过程当中发生了异常，异常的信息是"+e.getMessage());
-        }
-    }
+    }  
+	
+	//获取accessToken
+//	public AccessToken getAccessToken()  {
+//		System.out.println("123");
+//	       Optional<AccessToken> accessToken = accessTokenRepository.findById(1);
+//	       System.out.println("1233");
+//	       AccessToken myaccessToken = null;
+//	       if(accessToken.isPresent()) {
+//	    	   myaccessToken = accessToken.get();
+//	       }
+//	       System.out.println("--------------"+myaccessToken);
+//	       //System.out.println("CreateTime: "+accessToken.get().getCreatedate().getTime()+"NOW: "+new Date().getTime() +"\n"+ Long.parseLong(accessToken.get().getExpiresin()));
+//	       if(myaccessToken == null){
+//	    	   //System.out.println("CreateTime: "+accessToken.get().getCreatedate().getTime()+"NOW: "+new Date().getTime() +"\n"+ Long.parseLong(accessToken.get().getExpiresin()));
+//	           String url = accesstoken.replace("APPID", appid).replace("APPSECRET", appsecret);
+//	           JSONObject jsonObject = httpRequest(url, "GET", null);
+//	           System.out.println(jsonObject.toString());
+//	           if(jsonObject.getString("errcode") == null){
+//	        	   myaccessToken = new AccessToken();
+//	        	   myaccessToken.setId(1);
+//	        	   myaccessToken.setAccessToken(jsonObject.getString("access_token"));
+//	        	   myaccessToken.setExpiresin(jsonObject.getString("expires_in"));
+//	        	   myaccessToken.setCreatedate(new Date());
+//	           }
+//	           accessTokenRepository.save(myaccessToken);
+//	       }
+//	       else if(myaccessToken.getCreatedate().getTime() + (Long.parseLong(myaccessToken.getExpiresin())-200L) *1000 < new Date().getTime()) {
+//	    	   String url = accesstoken.replace("APPID", appid).replace("APPSECRET", appsecret);
+//	           JSONObject jsonObject = httpRequest(url, "GET", null);
+//	           System.out.println(jsonObject.toString());
+//	           if(jsonObject.getString("errorcode") == null){
+//	        	   myaccessToken = new AccessToken();
+//	        	   myaccessToken.setAccessToken(jsonObject.getString("access_token"));
+//	        	   myaccessToken.setExpiresin(jsonObject.getString("expires_in"));
+//	        	   myaccessToken.setCreatedate(new Date());
+//	           }
+//	           accessTokenRepository.save(myaccessToken);
+//	       }
+//	       return myaccessToken;
+//	 }
+
+	/**
+	 * 检测微信头像是否可用
+	 * @param url
+	 * @return
+	 */
+	public static boolean checkWeChatHeadImg(String url) throws Exception{
+	    HttpURLConnection http = null;
+	    try {
+	        URL urlObj = new URL(url);
+	        if(url.startsWith("https://")){
+	            http = (HttpsURLConnection) urlObj.openConnection();
+	        }else{
+	            http = (HttpURLConnection) urlObj.openConnection();
+	        }
+	        http.setRequestMethod("GET");
+	        http.setConnectTimeout(30 * 1000);
+	        http.setReadTimeout(30 * 1000);
+	        http.setRequestProperty("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36");
+	        http.setDefaultUseCaches(false);
+
+	        http.connect();
+
+	        Map<String, List<String>> resHeaders = http.getHeaderFields();
+	        for (Map.Entry<String, List<String>> entry : resHeaders.entrySet()) {
+	            String name = entry.getKey();
+	            if ("X-ErrNo".equalsIgnoreCase(name)) {
+	                return false;
+	            }
+	        }
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    } finally {
+	        if (http != null) {
+	            http.disconnect();
+	        }
+	    }
+	    return true;
+	}
+//   @Scheduled(initialDelay = 500, fixedDelay = 100*60*1000)
+//    public void get_access_token() {
+//        try {
+//            WeichatAccessTokenEntity weichatAccessToken = new WeichatAccessTokenEntity();
+//            String requestUrl = accesstoken;
+//            requestUrl = requestUrl.replace("APPID",appid).replace("APPSECRET",appsecret);
+//            JSONObject jsonObject = httpRequest(requestUrl,"GET",null);
+//            if(jsonObject.getString("access_token")!=null){
+//                System.out.println(jsonObject.getString("access_token"));
+//                System.out.println(jsonObject.getInt("expires_in"));
+//                weichatAccessToken = weichatAccessTokenRepository.findByAppid(appid);
+//                if(weichatAccessToken == null){
+//                    weichatAccessToken.setAccessToken(jsonObject.getString("access_token"));
+//                    weichatAccessToken.setExpiresIn(jsonObject.getInt("expires_in"));
+//                    weichatAccessToken.setAppid(appid);
+//                }else{
+//                    weichatAccessToken.setAccessToken(jsonObject.getString("access_token"));
+//                }
+//                weichatAccessTokenRepository.save(weichatAccessToken);
+//            }
+//            else{
+//                log.error("定时获取token失败 errcode:{} errmsg:{}",jsonObject.getInt("errcode"), jsonObject.getString("errmsg"));
+//            }
+//        }
+//        catch (Exception e){
+//            log.info("更新access_token的过程当中发生了异常，异常的信息是"+e.getMessage());
+//        }
+//    }
+	
+	public static Menu initMenu(){
+		Menu menu = new Menu();
+		ViewButton button11 = new ViewButton();
+		button11.setName("进入商城");
+		button11.setType("view");
+		button11.setUrl("http://www.pockethome.com.cn/index.html");
+
+		ClickButton button21 = new ClickButton();
+		button21.setName("我的二维码");
+		button21.setType("click");
+		button21.setKey("21");
+
+		ViewButton button31 = new ViewButton();
+		button31.setName("我的");
+		button31.setType("view");
+		button31.setUrl("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx2ec2c331d6af829a&redirect_uri=http://www.pockethome.com.cn/pockethome/spring/WeiChat/bind.do&response_type=code&scope=snsapi_base&state=123#wechat_redirect");
+
+		ClickButton button32 = new ClickButton();
+		button32.setName("在线客服");
+		button32.setType("click");
+		button32.setKey("32");
+		
+		ClickButton button33 = new ClickButton();
+		button33.setName("优惠券");
+		button33.setType("click");
+		button33.setKey("33");
+		
+		ClickButton button34 = new ClickButton();
+		button34.setName("公司简介");
+		button34.setType("click");
+		button34.setKey("34");
+		
+		ViewButton button35 = new ViewButton();
+		button35.setName("订单查询");
+		button35.setType("view");
+		button35.setUrl("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx2ec2c331d6af829a&redirect_uri=http://www.pockethome.com.cn/pockethome/spring/WeiChat/getorderlist&response_type=code&scope=snsapi_base&state=123#wechat_redirect");
+
+		Button button = new Button();
+		button.setName("服务中心");
+		button.setSub_button(new Button[]{button31,button32,button33,button34,button35});
+
+		menu.setButton(new Button[]{button11,button21,button});
+		return menu;
+		}
+	
+	public static int createMenu(String token,String menu) throws ClientProtocolException, IOException {
+	
+		int result = 0;
+	
+		String url = CREATE_MENU_URL.replace("ACCESS_TOKEN", token);
+	
+		JSONObject jsonObject = httpRequest(url,"POST",menu);
+	
+		if(jsonObject != null){
+	
+		result = jsonObject.getInt("errcode");
+	
+		}
+	
+		return result;
+	
+		}
+	
+	
 }
 

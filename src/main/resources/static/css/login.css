@@ -1,4 +1,4 @@
-ï»¿body {
+body {
   padding:0px;
   height:699px;
   margin:0px;
@@ -15,7 +15,7 @@
 #u17 {
   width:100%;
   height:180px;
-  background-color: #FF6600;
+  background-color: #FDD502;
   margin-top: -10px;
 }
 #u17 img{
@@ -27,7 +27,44 @@
   background-color:rgba(255, 255, 255, 0);
   color:#FFFFFF;
 }
-
+.top_center{
+	width: 90%;
+	height: 100px;
+	margin:10px auto;
+}
+.imgdiv{
+	width: 35%;
+	height: 100px;
+	float: left;
+}
+.img{
+	width: 5rem;
+	height: 6rem;
+	border-radius: 100%;
+	vertical-align: middle;
+	margin: 0 auto;
+	background-color:white;
+}
+.div_name{
+	width: 25%;
+	height: 50px;
+	margin-top: 40px;
+	float: left;
+}
+.div_button{
+	width: 80px;
+	height: 20px;
+	float: right;
+	margin-top: 40px;
+}
+.div_button button{
+	width: 80px;
+	height: 25px;
+	background-color: red;
+	border: none;
+	border-radius: 5px;
+	color: white;
+}
 #u18_div {
   border-width:0px;
   width:90%;
@@ -94,9 +131,9 @@
 	width: 100%;
 	height: 50px;
 	display: flex;
-ã€€ã€€ -webkit-box-pack: justify;
- ã€€ã€€-ms-flex-pack: justify;
-ã€€ã€€ justify-content: space-between;
+¡¡¡¡ -webkit-box-pack: justify;
+ ¡¡¡¡-ms-flex-pack: justify;
+¡¡¡¡ justify-content: space-between;
 }
 
 .u18_bottom_1{
@@ -174,8 +211,8 @@
 	height: 80px;
 	display: flex;
 	 -webkit-box-pack: justify;
- ã€€ã€€-ms-flex-pack: justify;
-ã€€ã€€ justify-content: space-between;
+ ¡¡¡¡-ms-flex-pack: justify;
+¡¡¡¡ justify-content: space-between;
 	margin: 10px auto;
 }
 #u47_img {
@@ -204,8 +241,8 @@
 	height: 50px;
 	display: flex;
 	 -webkit-box-pack: justify;
- ã€€ã€€-ms-flex-pack: justify;
-ã€€ã€€ justify-content: space-between;
+ ¡¡¡¡-ms-flex-pack: justify;
+¡¡¡¡ justify-content: space-between;
 	margin: 0px auto;
 }
 #u55_img {

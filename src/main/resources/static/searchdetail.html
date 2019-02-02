@@ -174,6 +174,7 @@ a:focus {outline: thin dotted;outline: 5px auto -webkit-focus-ring-color;outline
 
 var a=GetRequest();
 var title=a['title'];
+var myurl = a['myurl'];
 
 var statusArray = ["0","14","6","3","4"];
 var currentPage = ["1","1","1","1","1"];
@@ -308,28 +309,47 @@ function initTabData(page,index,isFirst){
 	//alert(index);
 	/**渲染加载数据**/
 	$.ajax({
-	url : "./getSearchDetail",
+	url : myurl,
 	async : true,
 	type : "post",
 	dataType:'JSON',
 	data : data,
 	success : function(result) {
-		var jsonString = JSON.stringify(result);// 转成JSON格式
+		var jsonString = JSON.stringify(result.content);// 转成JSON格式
     	var jsObject = JSON.parse(jsonString);
 		var div = "";
-    	if(jsObject.goods_search_response.goods_list.length > 0){
-    		for(var i = 0;i < jsObject.goods_search_response.goods_list.length; i++){
-        		div += searchdetaildiv.innerHTML.
-        		replace(/{goods_thumbnail_url}/,jsObject.goods_search_response.goods_list[i].goods_thumbnail_url).
-        		replace(/{goods_id}/,jsObject.goods_search_response.goods_list[i].goods_id).
-        		replace(/{goods_id}/,jsObject.goods_search_response.goods_list[i].goods_id).
-        		replace(/{goods_name}/,jsObject.goods_search_response.goods_list[i].goods_name).
-        		replace(/{min_group_price}/,jsObject.goods_search_response.goods_list[i].min_group_price/100).
-        		replace(/{sold_quantity}/,jsObject.goods_search_response.goods_list[i].sold_quantity).
-                replace(/{newmoney}/,(jsObject.goods_search_response.goods_list[i].min_group_price-jsObject.goods_search_response.goods_list[i].coupon_discount)/100).
-                replace(/{coupon_discount}/,jsObject.goods_search_response.goods_list[i].coupon_discount/100);
-        	}
-    	}          
+		
+		if(result.whatplatform == "pinduoduo"){
+			if(jsObject.goods_search_response.goods_list.length > 0){
+	    		for(var i = 0;i < jsObject.goods_search_response.goods_list.length; i++){
+	        		div += searchdetaildiv.innerHTML.
+	        		replace(/{goods_thumbnail_url}/,jsObject.goods_search_response.goods_list[i].goods_thumbnail_url).
+	        		replace(/{goods_id}/,jsObject.goods_search_response.goods_list[i].goods_id).
+	        		replace(/{goods_id}/,jsObject.goods_search_response.goods_list[i].goods_id).
+	        		replace(/{goods_name}/,jsObject.goods_search_response.goods_list[i].goods_name).
+	        		replace(/{min_group_price}/,jsObject.goods_search_response.goods_list[i].min_group_price/100).
+	        		replace(/{sold_quantity}/,jsObject.goods_search_response.goods_list[i].sold_quantity).
+	                replace(/{newmoney}/,(jsObject.goods_search_response.goods_list[i].min_group_price-jsObject.goods_search_response.goods_list[i].coupon_discount)/100).
+	                replace(/{coupon_discount}/,jsObject.goods_search_response.goods_list[i].coupon_discount/100);
+	        	}
+	    	} 
+		}else(result.whatplatform == "taobao"){
+			if(jsObject.tbk_item_get_response.results.n_tbk_item.length > 0){
+	    		for(var i = 0;i < jsObject.tbk_item_get_response.results.n_tbk_item.length; i++){
+	        		div += searchdetaildiv.innerHTML.
+	        		replace(/{goods_thumbnail_url}/,jsObject.tbk_item_get_response.results.n_tbk_item[i].pict_url).
+	        		replace(/{goods_id}/,jsObject.tbk_item_get_response.results.n_tbk_item[i].num_iid).
+	        		replace(/{goods_id}/,jsObject.tbk_item_get_response.results.n_tbk_item[i].num_iid).
+	        		replace(/{goods_name}/,jsObject.tbk_item_get_response.results.n_tbk_item[i].title).
+	        		replace(/{min_group_price}/,jsObject.tbk_item_get_response.results.n_tbk_item[i].min_group_price/100).
+	        		replace(/{sold_quantity}/,jsObject.tbk_item_get_response.results.n_tbk_item[i].volume).
+	                replace(/{newmoney}/,(jsObject.tbk_item_get_response.results.n_tbk_item[i].min_group_price-jsObject.goods_search_response.goods_list[i].coupon_discount)/100).
+	                replace(/{coupon_discount}/,jsObject.tbk_item_get_response.results.n_tbk_item[i].coupon_discount/100);
+	        	}
+	    	} 
+		}
+		
+    	         
       // document.getElementById('content1').innerHTML = div;
 	//如果是第一次
 	if(isFirst){

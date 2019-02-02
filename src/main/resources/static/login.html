@@ -169,7 +169,7 @@
 	        </div>
 	        <p class="weui_tabbar_label">特惠</p>
 	      </a>
-	      <a href="vip.html" class="weui_tabbar_item">
+	      <a href="#" class="weui_tabbar_item">
 	        <div class="weui_tabbar_icon1">
 	          <i class="iconfont" style="margin-left: 1.5px;">&#xe63f;</i>
 	        </div>
@@ -188,8 +188,22 @@
   
       <!-- Unnamed (矩形) -->
       <div id="u17" >
+      <!-- 
       	<div class="img" ><img src=""></div>
       	<p><span >XXX</span></p>
+       -->
+      	
+     	<div class="top_center">
+			<div class="imgdiv" >
+		    	<div class="img" ><img style="width: 5rem;height: 5rem;border-radius: 100%;" src="" id="headimg"></div>
+		    </div>
+		    <div class="div_name">
+		    	<p style="color: white;" id="nickname">XXX</p>
+		    </div>
+		    <div class="div_button" id="updatedian">
+		    	<button id="shengji">升级店长</button>
+		    </div>
+		</div>
       </div>
 
       <!-- Unnamed (矩形) -->
@@ -197,7 +211,7 @@
         <div id="u18_div" >
         	<div id="u18_top">
         		<div id="u18_top_left">
-        			 <p><span>可提现金额 </span><span id="qian">¥ XX</span></p>
+        			 <p><span>可提现金额 </span><span id="ketixian">¥ 0</span></p>
         		</div>
         		 <!-- Unnamed (矩形) -->
 		        <div id="u33" >
@@ -211,19 +225,19 @@
 		    <img id="u30_img" src="images/login/u30.png"/>
         	<div id="u18_bottom">
         		<div class="u18_bottom_1">
-        			<p class="u18_bottom_11"><span >¥ XX</span></p>
+        			<p class="u18_bottom_11"><span id="mouthmoney">¥ 0</span></p>
         			<p class="u18_bottom_12"><span >本月佣金</span></p>
         		</div>
         		<!-- Unnamed (垂直线) -->
 					  <img id="u18_img" class="img" src="images/login/u31.png"/>
         		<div class="u18_bottom_1">
-        			<p class="u18_bottom_11"><span >¥ XX</span></p>
+        			<p class="u18_bottom_11"><span id="todaymoney">¥ 0</span></p>
         			<p class="u18_bottom_12"><span >今日佣金</span></p>
         		</div>
         		<!-- Unnamed (垂直线) -->
 			      <img id="u18_img" class="img " src="images/login/u31.png"/>
         		<div class="u18_bottom_1">
-        			<p class="u18_bottom_11"><span >0</span></p>
+        			<p class="u18_bottom_11"><span id="">0</span></p>
         			<p class="u18_bottom_12"><span >团队成员</span></p>
         		</div>
         	</div>
@@ -240,20 +254,20 @@
 
 		<div id="div1">
 			<div id="u47all">
-							<div id="u47" >
-					       <img id="u47_img" class="img " src="images/login/u47.png"/>
+						<div id="u47" onclick = "dingdan()">
+					       <img id="u47_img" class="img" src="images/login/u47.png"/>
 					       <p><span>订单</span></p>
 					    </div>
-					     <div id="u47" >
-					       <img id="u47_img" class="img " src="images/login/u47.png"/>
+					     <div id="u47" onclick = "shouyi()">
+					       <img id="u47_img" class="img" src="images/login/u47.png"/>
 					       <p><span>收益</span></p>
 					     </div>
-					     <div id="u47" >
-					       <img id="u47_img" class="img " src="images/login/u47.png"/>
+					     <div id="u47" onclick = "team()">
+					       <img id="u47_img" class="img" src="images/login/u47.png"/>
 					       <p><span>团队</span></p>
 					     </div>
 					     <div id="u47" >
-					       <img id="u47_img" class="img " src="images/login/u47.png"/>
+					       <img id="u47_img" class="img" src="images/login/u47.png"/>
 					       <p><span>邀请</span></p>
 					     </div>
 					</div>
@@ -302,13 +316,102 @@
 		    </div>
         	<p><span>联系客服</span></p>
         </div>
-      </div>
-
-
-
-      
-
-     
+      </div>     
     </div>
+    
+    <script src="js/jquery-3.1.0.min.js"></script>
+    <script src="js/jquerysession.js"></script>
+    <script type="text/javascript">
+	    window.onload = function () {
+			var a = GetRequest();
+			var openId = a['openId'];
+			$.session.set('openId',openId);
+			getxinxi(openId);
+		};
+		function GetRequest() {
+		    var url = location.search; //获取url中"?"符后的字串
+		    var theRequest = new Object();
+		    if (url.indexOf("?") != -1) {
+		        var str = url.substr(1);
+		        strs = str.split("&");
+		        for (var i = 0; i < strs.length; i++) {
+		            theRequest[strs[i].split("=")[0]] = decodeURIComponent(strs[i].split("=")[1]);
+		        }
+		    }
+		    return theRequest;
+		}
+		function getxinxi(openId1){
+			$.ajax({
+   				url:'/pockethome/spring/WeiChat/getweixininfo',
+   				type:'post',
+   				dataType:'json',
+   				data:{"nopenId":openId1},
+   				success:function(data){
+   					$("#headimg").attr('src',data.headimgurl);
+   					$("#nickname").html(data.nickname);
+   					$.session.set('status',data.status);
+   					if(data.status == '0'){
+   						window.location.href = "/nojoin.html";
+   					}else if(data.status == '2'){
+   						document.getElementById("updatedian").style.display="none";//隐藏升级店长按钮
+   						GetMoney(openId1);
+   						GetKetixian(openId1);
+   					}
+   				}
+   			});
+		}
+		function GetMoney(openId1){
+			$.ajax({
+   				url:'/getmypromotionmoney',
+   				type:'post',
+   				dataType:'json',
+   				data:{"openId":openId},
+   				success:function(data){
+   					$("#mouthmoney").html(data.amountmouthmoneny);
+   					$("#todaymoney").html(data.amounttodaymoneny);
+   					$("#teamnumber").html(data.teamnumber);
+   				}
+   			});
+		}
+		function GetKetixian(openId1){
+			$.ajax({
+   				url:'/getketixian',
+   				type:'post',
+   				dataType:'json',
+   				data:{"openId":openId1},
+   				success:function(data){
+   					$("#ketixian").html(data.ketixian);
+   				}
+   			});
+		}
+		function shouyi(){
+			if($.session.get('status') == '2'){
+				window.location.href = "/shouyi.html";
+			}else if(($.session.get('status') == '1')){
+				window.location.href = "/yaoqingma.html";
+			}
+			
+		}
+		function team(){
+			if($.session.get('status') == '2'){
+				window.location.href = "/team.html";
+			}else if(($.session.get('status') == '1')){
+				window.location.href = "/yaoqingma.html";
+			}
+		}
+		function dingdan(){
+			if($.session.get('status') == '2'){
+				window.location.href = "/orderlist.html";
+			}else if(($.session.get('status') == '1')){
+				window.location.href = "/yaoqingma.html";
+			}
+		}
+		$("#shengji").click(function(){
+			window.location.href = "/yaoqingma.html";
+		　　});
+		$("#u33_div").click(function(){
+			window.location.href = "/tixian.html";
+		　　});
+    </script>
   </body>
 </html>

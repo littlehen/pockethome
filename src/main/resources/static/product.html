@@ -237,12 +237,10 @@ function GetRequest() {
     if (url.indexOf("?") != -1) {
         var str = url.substr(1);
         strs = str.split("&");
-        alert(strs);
         for (var i = 0; i < strs.length; i++) {
             theRequest[strs[i].split("=")[0]] = decodeURIComponent(strs[i].split("=")[1]);
         }
     }
-    alert(theRequest);
     return theRequest;
 }
 
@@ -251,11 +249,26 @@ function showit(){
 		url : "./generatePUrl",
 		type : "post",
 		dataType:'JSON',
-		data : {"goods_id_list":goods_id},
+		data : {"goods_id_list":goods_id,"openId":$.session.get('openId')},
 		success : function(result) {
 			var jsonString = JSON.stringify(result);// 转成JSON格式
 	    	var jsObject = JSON.parse(jsonString);	
 	    	window.location.href = "./showit.html?title="+title1+"&yuanjia="+yuanjia+"&xianjia="+xianjia+"&youhuiquan="+youhuiquan+"&lunbotu1="+lunbotu1+"&shorturl="+jsObject.goods_promotion_url_generate_response.goods_promotion_url_list[0].short_url;
+		}
+	});
+	
+}
+
+function buyNow(){
+	$.ajax({
+		url : "./generatePUrl",
+		type : "post",
+		dataType:'JSON',
+		data : {"goods_id_list":goods_id,"openId":$.session.get('openId')},
+		success : function(result) {
+			var jsonString = JSON.stringify(result);// 转成JSON格式
+	    	var jsObject = JSON.parse(jsonString);	
+	    	window.location.href = jsObject.goods_promotion_url_generate_response.goods_promotion_url_list[0].short_url;
 		}
 	});
 	

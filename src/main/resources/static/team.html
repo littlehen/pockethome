@@ -16,16 +16,16 @@
   	<div id="base">
   		<div class="base_top">
   			<div class="base_top_left img">
-  				<img src="">
+  				<img src="" id="headimg">
   			</div>
   			<div class="base_top_right">
-  				<p style="margin: 0 0;"><span id="u129_div">XXX</span></p>
+  				<p style="margin: 0 0;"><span id="u129_div" id="nickname">XXX</span></p>
   				<div class="div1">
-  					<p style="float: left;margin: 0 0;"><span id="u130_div">邀请码：XXXXXX</span></p>
+  					<p style="float: left;margin: 0 0;"><span class="u130_div">邀请码: </span><span class="u130_div" id="yaoqingma">XXXXXX</span></p>
   					<div id="u131" >
-				        <div id="u131_div" >
-				        	<p style="margin: 0 0;"><span>一键复制</span></p>
-				        </div>		          
+				        <button id="u131_div" class="copybtn" data-clipboard-action="copy" data-clipboard-target="#yaoqingma">
+				        	一键复制
+				        </button>			          
 				    </div>
   				</div>
   					
@@ -35,14 +35,14 @@
         <div id="u126_div" >
         	<div id="u126_div1">
         		<p class="u127_div"  style="margin-bottom:4px;"><span>您的邀请人</span></p>
-		      	<p class="u128_div" style="margin-top:0px;"><span>XXX</span></p>
+		      	<p class="u128_div" style="margin-top:0px;"><span id="nickname">XXX</span></p>
         	</div>
         	<div class="middleimg">
         		<img id="u140_img"  src="images/team/u140.png"/>
         	</div>
         	<div id="u126_div2">
         		<p class="u127_div"  style="margin-bottom:4px;"><span>团队店长</span></p>
-		      	<p class="u128_div" style="margin-top:0px;"><span>0</span></p>
+		      	<p class="u128_div" style="margin-top:0px;"><span id="teamnumber">0</span></p>
         	</div>
         </div>
   		</div>
@@ -50,5 +50,50 @@
 		    <div id="u132_div" class=""></div>
   		</div>
   	</div>
+  	<script src="js/jquery-3.1.0.min.js"></script>
+  	<script src="js/jquerysession.js"></script>
+  	<script src="js/clipboard.min.js"></script>
+  	<script type="text/javascript">
+	    window.onload = function () {
+			var openId = $.session.get('openId');
+			getweixininfo(openId);
+			getxiangguan(openId);
+		};
+		function getweixininfo(openId){
+			$.ajax({
+   				url:'/getweixininfo',
+   				type:'post',
+   				dataType:'json',
+   				data:{"nopenId":openId1},
+   				success:function(data){
+   					$("#headimg").attr('src',data.headimgurl);
+   					$("#nickname").html(data.nickname);
+   					$.session.set('status',data.status);
+   				}
+   			});
+		}
+		function getxiangguan(openId){
+			$.ajax({
+   				url:'/getxianguang',
+   				type:'post',
+   				dataType:'json',
+   				data:{"openId":openId1},
+   				success:function(data){
+   					$("#nickname").html(data.nickname);
+   					$("#teamnumber").html(data.teamnumber);
+   					$("#yaoqingma").html(data.yaoqingma);
+   				}
+   			});
+		}
+		var clipboard = new ClipboardJS('.copybtn');
+		 
+	     clipboard.on('success', function(e) {
+	         alert("复制成功,要记得去粘贴喔！");
+	     });
+	 
+	     clipboard.on('error', function(e) {
+	    	  alert("复制失败，请手动复制一下喔！");
+	    });	
+	</script>
   </body>
 </html>

@@ -1,4 +1,8 @@
 spring: 
+  cache:
+    type: ehcache
+    ehcache: 
+        config: classpath:/ehcache.xml
   datasource: 
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://47.107.131.74:3306/pockethome?useUnicode=true&characterEncoding=UTF-8
@@ -24,8 +28,8 @@ spring:
     useGlobalDataSourceStat: true
   jpa:
     properties:
-      hibernate:
-        hbm2ddl:
+      hibernate: 
+        hbm2ddl: 
           auto: update
     show-sql: true
   jmx:
@@ -50,10 +54,19 @@ weichat:
   appsecret: 6f062ee6567537c0e7e0705733b8580d
   authaccesstoken: https://api.weixin.qq.com/sns/oauth2/access_token?appid=APPID&secret=SECRET&code=CODE&grant_type=authorization_code
   accesstoken: https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET
+  getUserInfo: https://api.weixin.qq.com/cgi-bin/user/info?access_token=ACCESS_TOKEN&openid=OPENID&lang=zh_CN
   messagetemplate: https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=
   ordertemplateid: rTxoIxu4UKgJrW2P377X9JkWyMSvhzqSB1_hMvJdRpw
+  UPLOAD_URL: https://api.weixin.qq.com/cgi-bin/media/upload?access_token=ACCESS_TOKEN&type=TYPE
+  Get_ROREVER_MATERIAL_URL: https://api.weixin.qq.com/cgi-bin/material/get_material?access_token=ACCESS_TOKEN
+  qrcode_Media_Id: VpLWeq_teP-xtTHyegX73jYW0scHCM_GoB2Im50Qn9o
 CommonValues: 
     base_url: spring
 pinduoduo: 
    client_id: 4b45df16ebb643bf9594e93e55b289da
    client_secret: 9c16f347d216669b85061c1ee6d407ac6b66b9eb
+taobao: 
+   app_key: 25554237
+   app_secret: cfba26f4d9d3a97772104fc42fc42d68
+user: 
+   promotionrate: 0.2

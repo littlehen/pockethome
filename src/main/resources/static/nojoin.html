@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<meta content="telephone=no" name="format-detection">
+		<meta content="no-cache" http-equiv="Cache-Control">
+		<link rel="stylesheet" href="css/mui.min.css"/>
+		<title>立即加入</title>
+		<link rel="stylesheet" type="text/css" href="css/nojoin.css"/>
+	</head>
+	<body>
+		<div class="allcenter">
+			<div class="imgdiv" >
+		    	<div class="img" ><img style="width: 5rem;height: 5rem;border-radius: 100%;" id="headimg" src=""></div>
+		    </div>
+		    <div class="textdiv" >
+		    	<p>成为<span class="textred">店长&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="textred">&nbsp;&nbsp;&nbsp;&nbsp;省</span>钱更<span class="textred">赚</span>钱</p>
+		    </div>
+		    <div class="mui-button-row">
+                <button type="button" id="join" class="mui-btn mui-btn-primary" onclick = "joinus()" style="background-color: #FDD502;width: 50%;height: 35px;font-size: 15px;border: 1px solid #FDD502;">&nbsp;&nbsp;立即加入&nbsp;&nbsp;</button>
+            </div>
+		</div>
+		
+	<script src="js/jquery-3.1.0.min.js"></script>
+	<script src="js/jquerysession.js"></script>
+	<script type="text/javascript">
+		window.onload = function () {
+			var a = GetRequest();
+			var openId = a['openId'];
+			var headimgurl = a['headimgurl'];
+			$("#headimg").attr('src',headimgurl);
+			$.session.set('headimgurl',headimgurl);
+			$.session.set('openId',openId);
+		};
+		function GetRequest() {
+		    var url = location.search; //获取url中"?"符后的字串
+		    var theRequest = new Object();
+		    if (url.indexOf("?") != -1) {
+		        var str = url.substr(1);
+		        strs = str.split("&");
+		        for (var i = 0; i < strs.length; i++) {
+		            theRequest[strs[i].split("=")[0]] = decodeURIComponent(strs[i].split("=")[1]);
+		        }
+		    }
+		    return theRequest;
+		}
+		function joinus(){
+			 window.location.href = "/bangding.html";
+		}
+	</script>
+	</body>
+</html>

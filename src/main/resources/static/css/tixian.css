@@ -1,0 +1,197 @@
+body{margin:0}
+.top_div{
+	width: 100%;
+	height: 160px;
+	text-align: center;
+	position:relative;
+	border-bottom: gainsboro solid 1px;
+}
+.top_div_center{
+	width: 80%;
+    height: 50%;
+    position:absolute;
+    left:0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+}
+.top_div_center p {margin:5px; padding:0}
+.u97_div {
+  border-width:0px;
+  width:75px;
+  height:18px;
+  background:inherit;
+  background-color:rgba(255, 255, 255, 1);
+  box-sizing:border-box;
+  border-width:1px;
+  border-style:solid;
+  border-color:rgba(255, 204, 0, 1);
+  border-radius:52px;
+  -moz-box-shadow:none;
+  -webkit-box-shadow:none;
+  box-shadow:none;
+  color:#999999;
+  margin: 0 auto;
+　-webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+　justify-content: space-between;
+  text-align: center;
+  line-height: 18px;
+ font-size: 11px;
+}
+.u97 {
+  border-width:0px;
+  width:103px;
+  height:22px;
+  color:#999999;
+  margin: 0 auto;
+}
+#jiner{
+	font-size: 18px;
+	font-weight:bold;
+	color: red;
+}
+.ketixianjiner{
+	font-size: 13px;
+}
+.u3_div_top{
+	width: 96%;
+	height: 20px;
+	padding: 5px 5px;
+}
+.u3_div_top_left1 {
+  border-width:0px;
+  left:10px;
+  width:5px;
+  height:18px;
+  float: left;
+}
+.u3_div_top_left11 {
+  border-width:0px;
+  left:0px;
+  width:5px;
+  height:18px;
+  background:inherit;
+  background-color:black;
+  border:none;
+  border-radius:0px;
+  -moz-box-shadow:none;
+  -webkit-box-shadow:none;
+  box-shadow:none;
+  float: left;
+}
+.u3_div_top_left2 {
+  float: left;
+  border-width:0px;
+  width:70px;
+  height:20px;
+  font-family:'Arial Negreta', 'Arial Normal', 'Arial';
+  font-weight:700;
+  font-style:normal;
+  font-size:12px;
+  text-align: center;
+  vertical-align: middle;
+}
+.u3_div_top_left2 p{
+	margin: 0 0;
+	text-align: center;
+}
+#right{
+	float: right;
+}
+#aa{
+    transition: height 0.2s linear;
+    height: 0;
+    overflow:hidden;
+}
+#aa1{
+    transition: height 0.2s linear;
+    height: 0;
+    overflow:hidden;
+}
+.myp{
+	width: 90%;
+	margin: 10px auto;
+}
+.myp p{
+	margin: 0;
+	padding: 0;
+	font-size: 10px;
+}
+.opt{height:30px;line-height:24px;line-height: 18px;margin: 10px auto;border-bottom: 1px solid gainsboro;}
+.magic-radio{
+  position: absolute;
+  display: none; 
+}
+
+.magic-radio[disabled]{
+  cursor: not-allowed; }
+
+.magic-radio + label{
+  position: relative;
+  display: block;
+  padding-left: 30px;
+  cursor: pointer;
+  vertical-align: middle; }
+  .magic-radio + label:hover:before{
+    animation-duration: 0.4s;
+    animation-fill-mode: both;
+    animation-name: hover-color; }
+  .magic-radio + label:before{
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    content: '';
+    border: 1px solid #c0c0c0; }
+  .magic-radio + label:after{
+    position: absolute;
+    display: none;
+    content: ''; }
+
+
+.magic-radio:checked + label:before{
+  animation-name: none; }
+
+.magic-radio:checked + label:after{
+  display: block; }
+
+.magic-radio + label:before {
+  border-radius: 50%; }
+
+.magic-radio + label:after {
+  top: 4.5px;
+  left: 4.5px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: orange; }
+
+.magic-radio:checked + label:before {
+  border: 1px solid orange; }
+.col{
+	width: 94%;
+	margin: 0px auto;
+}
+.ziti{
+	font-size: 10px;
+}
+.mui-button-row{
+	width: 90%;
+	margin: 0 auto;
+}
+.mui-btn{
+	width: 100%; /* 宽度 */
+	height: 35px; /* 高度 */
+	border-width: 0px; /* 边框宽度 */
+	border-radius: 3px; /* 边框半径 */
+	background: gray; /* 背景颜色 */
+	cursor: pointer; /* 鼠标移入按钮范围时出现手势 */
+	outline: none; /* 不显示轮廓线 */
+	font-family: Microsoft YaHei; /* 设置字体 */
+	color: white; /* 字体颜色 */
+	font-size: 17px; /* 字体大小 */
+}

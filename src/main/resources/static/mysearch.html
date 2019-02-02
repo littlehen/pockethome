@@ -172,8 +172,10 @@
 			</div>
 		</a>
 		<div class="left1">
-			<select name="shop" id="selectshop">
+			<select name="shop" id="selectshop" >
 				<option value="pinduoduo">拼多多</option>
+				<option value="taobao">淘宝</option>
+				<option value="jingdong">京东</option>
 			</select>
 		</div>
 		<div class="search">
@@ -247,22 +249,22 @@
 init(); 
 
 $("#search").click(function(){ 
-	var value = $("#idNumber1").val(); 
+	var title = $("#idNumber1").val(); 
 	var time = (new Date()).getTime(); 
 	
-	if(!value){ 
+	if(!title){ 
 		alert("你未输入搜索内容"); 
 		return false; 
 	} 
 	
 	//输入的内容localStorage有记录 
-	if($.inArray(value,hisItem)>=0){ 
+	if($.inArray(title,hisItem)>=0){ 
 	for(var j = 0;j<localStorage.length;j++){ 
-		if(value==localStorage.getItem(localStorage.key(j))){ 
+		if(title==localStorage.getItem(localStorage.key(j))){ 
 			localStorage.removeItem(localStorage.key(j)); 
 		} 
 	} 
-		localStorage.setItem(time,value); 
+		localStorage.setItem(time,title); 
 	} 
 	//输入的内容localStorage没有记录 
 	else{ 
@@ -270,53 +272,70 @@ $("#search").click(function(){
 		if(hisItem.length>4){ 
 			firstKey = hisTime[0] 
 			localStorage.removeItem(firstKey); 
-			localStorage.setItem(time,value); 
+			localStorage.setItem(time,title); 
 		}else{ 
-			localStorage.setItem(time,value) 
+			localStorage.setItem(time,title) 
 		} 
 	} 
 	init(); 
+    var val = document.getElementById('selectshop');
+    var value = val.options[val.selectedIndex].value;
+    var myurl = "./getSearchDetail";
+
+    if(value == "pinduoduo"){
+    	 myurl = "./getSearchDetail";
+    }else if(value == "taobao"){
+    	 myurl = "./getTaobaoSearchDetail";
+    }else{
+    	 myurl = "./getSearchDetail";
+    }
 	//正式的时候要提交的!!! 
-	window.location.href = "./searchdetail.html?title="+value;
+	window.location.href = "./searchdetail.html?title="+title+"&myurl="+myurl;
 
 }); 
 
-document.onkeyup = function (e) {
-var code = e.charCode || e.keyCode;
-if (code == 13) {
-var value = $("#idNumber1").val(); 
-	var time = (new Date()).getTime(); 
+//回车键触发提交
+    $('body').keydown(function(event){
+       if (event.keyCode == 13) {
+           document.getElementById("search").click();
+         }
+    })
+//document.onkeyup = function (e) {
+//var code = e.charCode || e.keyCode;
+//if (code == 13) {
+//var value = $("#idNumber1").val(); 
+//	var time = (new Date()).getTime(); 
 	
-	if(!value){ 
-		alert("你未输入搜索内容"); 
-		return false; 
-	} 
+//	if(!value){ 
+//		alert("你未输入搜索内容"); 
+//		return false; 
+//	} 
 	
 	//输入的内容localStorage有记录 
-	if($.inArray(value,hisItem)>=0){ 
-	for(var j = 0;j<localStorage.length;j++){ 
-		if(value==localStorage.getItem(localStorage.key(j))){ 
-			localStorage.removeItem(localStorage.key(j)); 
-		} 
-	} 
-		localStorage.setItem(time,value); 
-	} 
+//	if($.inArray(value,hisItem)>=0){ 
+//	for(var j = 0;j<localStorage.length;j++){ 
+//		if(value==localStorage.getItem(localStorage.key(j))){ 
+//			localStorage.removeItem(localStorage.key(j)); 
+//		} 
+//	} 
+//		localStorage.setItem(time,value); 
+//	} 
 	//输入的内容localStorage没有记录 
-	else{ 
+//	else{ 
 		//由于限制了只能有6条记录,所以这里进行判断 
-		if(hisItem.length>4){ 
-			firstKey = hisTime[0] 
-			localStorage.removeItem(firstKey); 
-			localStorage.setItem(time,value); 
-		}else{ 
-			localStorage.setItem(time,value) 
-		} 
-	} 
-	init(); 
+//		if(hisItem.length>4){ 
+//			firstKey = hisTime[0] 
+//			localStorage.removeItem(firstKey); 
+//			localStorage.setItem(time,value); 
+//		}else{ 
+//			localStorage.setItem(time,value) 
+//		} 
+//	} 
+//	init(); 
 	//正式的时候要提交的!!! 
-	$("#form1").submit() ;
-}
-}
+//	$("#form1").submit() ;
+//}
+//}
 
 //清除记录功能 
 $("#his-dele").click(function(){ 
@@ -334,9 +353,10 @@ $(function(){
 	}) 
 	//取到值以后button存储无法取值,这里强迫浏览器强行刷新可解决 
 	$('#search').click(function(){ 
-		window.location.href = "./searchdetail.html?title="+value;
+		window.location.href = "./searchdetail.html?title="+title+"&myurl="+myurl;
 	}) 
 }) 
+
 </script> 
 </body> 
 </html> 

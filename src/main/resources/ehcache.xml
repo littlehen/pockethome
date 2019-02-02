@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="ehcache.xsd"
+         updateCheck="false" monitoring="autodetect"
+         dynamicConfig="true">
+
+    <diskStore path="java.io.tmpdir"/>
+    <!-- 最多存活10分钟，超过5分钟未命中则失效 -->
+    <defaultCache
+            maxEntriesLocalHeap="10000"
+            eternal="false"
+            overflowToDisk="false"
+            timeToIdleSeconds="300"
+            memoryStoreEvictionPolicy="LFU"
+            timeToLiveSeconds="600">
+
+    </defaultCache>
+
+
+
+   
+    <cache
+    	   name="TokenCache"
+           eternal="false"
+           maxElementsInMemory="100"
+           overflowToDisk="false"
+           diskPersistent="false"
+           timeToIdleSeconds="7000"
+           timeToLiveSeconds="7000"
+           memoryStoreEvictionPolicy="LRU" />
+
+
+</ehcache>

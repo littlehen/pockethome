@@ -25,11 +25,13 @@
 	</properties>
 
 	<dependencies>
+	
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
 			<scope>provided</scope>
-		</dependency>
+		</dependency> 
+	
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -93,17 +95,82 @@
             <version>3.3.2</version>
         </dependency>
         <dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-cache</artifactId>
+		    <version>2.0.1.RELEASE</version>
+		</dependency>
+        <!-- https://mvnrepository.com/artifact/net.sf.ehcache/ehcache -->
+		<dependency>
+		    <groupId>net.sf.ehcache</groupId>
+		    <artifactId>ehcache</artifactId>
+		    <version>2.10.4</version>
+		</dependency>
+        <dependency>
 		    <groupId>com.google.zxing</groupId>
 		    <artifactId>core</artifactId>
 		    <version>3.3.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.yueqian.pokethome</groupId>
+			<artifactId>taobao-sdk-java-auto</artifactId>
+			<version>1.0</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/src/main/resources/lib/taobao-sdk-java-auto.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>com.yueqian.pokethome</groupId>
+			<artifactId>pop-sdk-0.0.4-all</artifactId>
+			<version>1.0</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/src/main/resources/lib/pop-sdk-0.0.4-all.jar</systemPath>
+		</dependency>
+		 <dependency>
+		    <groupId>com.thoughtworks.xstream</groupId>
+		    <artifactId>xstream</artifactId>
+		    <version>1.4.9</version>
 		</dependency>
 	</dependencies>
 
 	<build>
 		<plugins>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-install-plugin</artifactId>
+				<version>2.5.2</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+				<webResources>
+					<resource>
+                          <directory>src/main/resources/lib/</directory>
+                          <targetPath>WEB-INF/lib/</targetPath>
+                          <includes>
+                                <include>**/*.jar</include>
+                          </includes>
+                       </resource>
+				</webResources>
+				<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+
+
+			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+					<compilerArgs>-Xlint:deprecation</compilerArgs>
+
+				</configuration>
 			</plugin>
 		</plugins>
 		 <defaultGoal>compile</defaultGoal>

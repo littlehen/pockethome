@@ -7,6 +7,9 @@
 <meta content="black" name="apple-mobile-web-app-status-bar-style">
 <meta content="telephone=no" name="format-detection">
 <meta content="no-cache" http-equiv="Cache-Control">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
 <title>首页</title>
 <link rel="stylesheet" href="css/weui.css"/>
 <link rel="stylesheet" href="css/weui2.css"/>
@@ -226,7 +229,7 @@ input::-webkit-input-placeholder{text-align: center;}
         </div>
         <p class="weui_tabbar_label">特惠</p>
       </a>
-      <a href="login.html" class="weui_tabbar_item">
+      <a href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx2ec2c331d6af829a&redirect_uri=http://www.pockethome.com.cn/pockethome/spring/WeiChat/bind.do&response_type=code&scope=snsapi_base&state=123#wechat_redirect"  class="weui_tabbar_item"><!-- href="javascript:void(0)" onclick="mine() -->
         <div class="weui_tabbar_icon">
           <i class="iconfont" style="margin-left: 1.5px;">&#xe63f;</i>
         </div>
@@ -253,7 +256,7 @@ input::-webkit-input-placeholder{text-align: center;}
 	</div><!-- //焦点图结束 -->
 	
 	<div class="menu flex swiper-wrapper">
-		<a class="item cell" href="subindex.html" data-trackid="首页-快速入口-1"><span class="icon"><div class="ware-img ui-imglazyload" data-url="images/menu-1.png"></div></span>淘宝</a>
+		<a class="item cell" href="subindex.html" data-trackid="首页-快速入口-1"><span class="icon"><div class="ware-img ui-imglazyload" data-url="images/menu-1.png"></div></span>拼多多</a>
 		<a class="item cell" href="./pinduoduo.html" data-trackid="首页-快速入口-2"><span class="icon"><div class="ware-img ui-imglazyload" data-url="images/menu-2.png"></div></span>拼多多</a>
 		<a class="item cell" href="purchase.html" data-trackid="首页-快速入口-3"><span class="icon"><div class="ware-img ui-imglazyload" data-url="images/menu-3.png"></div></span>京东</a>
 		<a class="item cell" href="allOrder.html" data-trackid="首页-快速入口-4"><span class="icon"><div class="ware-img ui-imglazyload" data-url="images/menu-4.png"></div></span>蘑菇街</a>
@@ -373,7 +376,7 @@ input::-webkit-input-placeholder{text-align: center;}
 	<div class="fourdiv">
 		<div class="eachone eachone1">
 			<div class="eachleft">
-				<p class="bigp">聚划算</p>
+				<p class="bigp">拼多多</p>
 				<p class="smallp">低价抢大牌</p>
 			</div>
 			<div class="eachright">
@@ -382,7 +385,7 @@ input::-webkit-input-placeholder{text-align: center;}
 		</div>
 		<div class="eachone eachone2">
 			<div class="eachleft">
-				<p class="bigp" style="color: #FDD502;">聚划算</p>
+				<p class="bigp" style="color: #FDD502;">拼多多</p>
 				<p class="smallp">低价抢大牌</p>
 			</div>
 			<div class="eachright">
@@ -391,7 +394,7 @@ input::-webkit-input-placeholder{text-align: center;}
 		</div>
 		<div class="eachone eachone3">
 			<div class="eachleft">
-				<p class="bigp" style="color: #F51D66;">聚划算</p>
+				<p class="bigp" style="color: #F51D66;">拼多多</p>
 				<p class="smallp">低价抢大牌</p>
 			</div>
 			<div class="eachright">
@@ -400,7 +403,7 @@ input::-webkit-input-placeholder{text-align: center;}
 		</div>
 		<div class="eachone eachone4">
 			<div class="eachleft">
-				<p class="bigp" style="color: #1A1AA6;">聚划算</p>
+				<p class="bigp" style="color: #1A1AA6;">拼多多</p>
 				<p class="smallp">低价抢大牌</p>
 			</div>
 			<div class="eachright">
@@ -485,6 +488,23 @@ input::-webkit-input-placeholder{text-align: center;}
 
 
 <script>
+window.onload = function () {
+	var a = GetRequest();
+	var openId = a['openId'];
+	$.session.set('openId',openId);
+};
+function GetRequest() {
+    var url = location.search; //获取url中"?"符后的字串
+    var theRequest = new Object();
+    if (url.indexOf("?") != -1) {
+        var str = url.substr(1);
+        strs = str.split("&");
+        for (var i = 0; i < strs.length; i++) {
+            theRequest[strs[i].split("=")[0]] = decodeURIComponent(strs[i].split("=")[1]);
+        }
+    }
+    return theRequest;
+}
 $("#inputsubmit").click(function(){
     window.location.href='mysearch.html';
 })

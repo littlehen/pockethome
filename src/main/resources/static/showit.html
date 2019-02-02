@@ -247,7 +247,7 @@ window.onload = function () {
 	$("#xianjia").html("￥"+xianjia);
 	$("#youhuiquan").html(youhuiquan+"元券");
 	$("#lunbotu1").attr('src',lunbotu1);  
-	$("#photosrc1").attr('src',"http://www.pockethome.com.cn:8090/pockethome-0.0.1-SNAPSHOT/qr-code?url="+shorturl);
+	$("#photosrc1").attr('src',"/pockethome/qr-code?url="+shorturl);
 	
 	var ppp="";
 	ppp += wenzip.innerHTML.
@@ -312,7 +312,7 @@ function GetRequest() {
     return theRequest;
 }
 
-var clipboard = new ClipboardJS('.copybtn');
+	var clipboard = new ClipboardJS('.copybtn');
  
      clipboard.on('success', function(e) {
          alert("复制成功,要记得去粘贴喔！");

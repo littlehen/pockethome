@@ -1,0 +1,126 @@
+.top_search{
+	width: 100%;
+	height: 30px;
+	margin-top: 20px;
+}
+.search{
+	height: 30px;
+	width: 75%;
+	margin: 0 auto;
+}
+#idNumber1{ 
+	 /*清除select默认样式*/
+   
+    border-bottom-left-radius:10px;
+    border-top-left-radius: 10px;
+	width:90%; 
+	overflow:hidden; 
+	text-align:left; 
+	height:30px; 
+	float: left;
+	border-left: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	border-top: 1px solid #ccc;
+} 
+.s-btn{
+	height: 30px;
+	width: 10%;
+	background-color: #EEEEEE;
+	float: right;
+	text-align:center;
+	margin-bottom: 2px;
+	border-top-right-radius: 8px; 
+	border-bottom-right-radius:8px;
+	line-height: 30px;
+}
+.menuone{
+	width: 100%;
+	height: 40px;
+	background-color: gainsboro;
+	margin-top: 10px;
+	text-align: center;
+}
+.menuone1{
+	width: 80%;
+	height: 40px;
+	margin: 10px auto;
+	text-align: center;
+}
+.menuone_left{
+	width: 50%;
+	float: left;
+	height: 38px;
+	margin: 0 auto;
+	text-align: center;
+	line-height: 40px;
+	color: #000000;
+	border-bottom: 1px orange solid;
+}
+.menuone_right{
+	width: 50%;
+	height: 38px;
+	float: right;
+	margin: 0 auto;
+	text-align: center;
+	line-height: 40px;
+	color: gray;
+}
+.menutwo{
+	width: 100%;
+	height: 40px;
+	background-color: white;
+	margin-top: 10px;
+	border-bottom: 1px gainsboro solid;
+}
+#menutwo1{
+	width: 80%;
+	height: 40px;
+	display: flex;
+　　 -webkit-box-pack: justify;
+ 　　-ms-flex-pack: justify;
+　　 justify-content: space-between;
+	margin: 0 auto;
+	line-height: 40px;
+}
+.u18_bottom_1{
+	width: 33%;
+	height: 40px;
+	text-align: center;
+}
+#u18_bottom_1{
+	color: orange;
+}
+.menutree{
+	width: 100%;
+	margin-top: 10px;
+	text-align: center;
+	transition: height 0.2s linear;
+    height: 0;
+    overflow:hidden;
+}
+.menutree1{
+	width: 80%;
+	height: 40px;
+	display: flex;
+　　 -webkit-box-pack: justify;
+ 　　-ms-flex-pack: justify;
+　　 justify-content: space-between;
+	margin: 0 auto;
+	line-height: 30px;
+}
+.menutree1_1{
+	width: 33%;
+	height: 30px;
+	text-align: center;
+	margin-top: 5px;
+}
+#menutree1_11,#menutree1_2,#menutree1_3{
+	width: 40px;
+	height: 25px;
+	background-color: lightgreen;
+	font-size: 10px;
+	text-align: center;
+	line-height: 25px;
+	margin: 0 auto;
+	border-radius: 10px;
+}

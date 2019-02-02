@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<meta content="telephone=no" name="format-detection">
+		<meta content="no-cache" http-equiv="Cache-Control">
+		<link rel="stylesheet" type="text/css" href="css/tixian.css"/>
+		<link rel="stylesheet" href="css/weui2.css"/>
+		<title>提现</title>
+	</head>
+	<body>
+		<div class="top_div">
+			<div class="top_div_center">
+				<p id="jiner">
+					￥13.41
+				</p>
+				<p class="ketixianjiner">
+					可提现金额
+				</p>
+				<div class="u97">
+			    	<div class="u97_div">
+			        	口袋专享奖励
+			        </div>
+			    </div>
+			</div>
+		</div>
+		
+		<div class="u3_div_top">
+    		<div class="u3_div_top_left1">
+    			<div class="u3_div_top_left11"></div>
+    		</div>
+    		<div class="u3_div_top_left2">
+    			<p><span>提现规则</span></p>
+    		</div>
+    		<div id="right">
+				<i class="iconfont">&#xe601;</i>
+			</div>
+    	</div>
+    	<div id="aa">
+	        <div class="myp">
+	        	<p>1.满20元方可提现;</p>
+	        	<p>2.提现失败的付款佣金将自动退回"可提现金额"请你确保提现账号正确，再次申请提现;</p>
+	        	<p>3.每月20号到24号结算上个月的订单到可提现余额，25号全部进可提现余额,可提现余额随时可以提现。</p>
+	        </div>
+	    </div>
+        <div class="u3_div_top" style="border-bottom: 1px solid gainsboro;">
+    		<div class="u3_div_top_left1">
+    			<div class="u3_div_top_left11"></div>
+    		</div>
+    		<div class="u3_div_top_left2">
+    			<p><span>提现方式</span></p>
+    		</div>
+    	</div>
+    	<div class="col">
+			<div class="opt" onclick="weixin()">
+				<input class="magic-radio" type="radio" name="radio" id="r1" value="option1" checked>
+				<label for="r1" style="font-size: 10px;color: orange;" id="wechat">微信提现</label>
+			</div>
+			<div class="opt" onclick="zhifubao()">
+				<input class="magic-radio" type="radio" name="radio" id="r2" value="option2" >
+				<label for="r2" style="font-size: 10px;" id="alipay">支付宝提现</label>
+			</div>
+			<div id="aa1">
+	        	<div class="kuang" style="border-bottom: 1px solid gainsboro; padding-bottom:10px ;">
+	        		<span class="ziti">姓名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	        			&nbsp;&nbsp;&nbsp;&nbsp;
+	        			&nbsp;&nbsp;&nbsp;&nbsp; </span><input type="text"  style="border: 0px;outline:none;" placeholder="请输入您的真实姓名"/>
+	        	</div>
+	        	<div class="kuang" style="border-bottom: 1px solid gainsboro;padding-top:10px;padding-bottom:10px ;">
+	        		<span class="ziti">支付宝账号&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><input type="text"  style="border: 0px;outline:none;" placeholder="请输入您的支付宝账号"/>
+	        	</div>
+		    </div>
+		    <div class="mui-button-row">
+                <button type="button" id="reg" class="mui-btn" >&nbsp;&nbsp;提现&nbsp;&nbsp;</button>
+            </div>
+            <div class="u3_div_top" style="margin-top: 20px;">
+	    		<div class="u3_div_top_left1">
+	    			<div class="u3_div_top_left11"></div>
+	    		</div>
+	    		<div class="u3_div_top_left2">
+	    			<p><span>提现记录</span></p>
+	    		</div>
+	    		<div id="right">
+					<i class="iconfont">&#xe601;</i>
+				</div>
+	    	</div>
+        </div>
+        
+        <script src="js/jquery-3.1.0.min.js"></script>
+        <script src="js/jquerysession.js"></script>
+    	<script>
+    		var bb = document.getElementById("right");
+	        var aa = document.getElementById("aa");
+	        var aa1 = document.getElementById("aa1");
+	        var b1 = true;
+	        bb.onclick = function () {
+	            if (b1) {
+	                aa.style.height='100px'
+	                b1 = false;
+	            } else {
+	                aa.style.height = '0'
+	                b1 = true;
+	            }
+	        }
+	        function weixin(){
+	        	document.getElementById("wechat").style.color="orange";
+	        	document.getElementById("alipay").style.color="black";
+	        	aa1.style.height='0px';
+	        }
+	        function zhifubao(){
+	        	document.getElementById("alipay").style.color="orange";
+	        	document.getElementById("wechat").style.color="black";
+                aa1.style.height='100px';
+	        }
+    	</script>
+	</body>
+</html>

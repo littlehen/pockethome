@@ -1,4 +1,4 @@
-﻿
+
 body {
     font-family: "microsoft yahei";
 }
@@ -44,7 +44,7 @@ body {
     left: 0px;
     width: 3px;
     height: 91px;
-    background-color: #FF6600;
+    background-color: #FDD502;
 }
 
 .mui-input-group .mui-input-row i {
