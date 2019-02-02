@@ -290,26 +290,31 @@ public class WeiChatController {
         if (msgType.equals(WeChatMessageUtil.REQ_MESSAGE_TYPE_TEXT)) {  
             respContent = "欢迎加入口袋专享！！";  
             respMessage = WeChatMessageUtil.initTextMessage(respContent, toUserName, fromUserName);
+            out.write(respMessage);
         }  
         // 图片消息  
         else if (msgType.equals(WeChatMessageUtil.REQ_MESSAGE_TYPE_IMAGE)) {  
             respContent = "欢迎加入口袋专享！";  
             respMessage = WeChatMessageUtil.initTextMessage(respContent, toUserName, fromUserName);
+            out.write(respMessage);
         }  
         // 地理位置消息  
         else if (msgType.equals(WeChatMessageUtil.REQ_MESSAGE_TYPE_LOCATION)) {  
             respContent = "欢迎加入口袋专享！";  
             respMessage = WeChatMessageUtil.initTextMessage(respContent, toUserName, fromUserName);
+            out.write(respMessage);
         }  
         // 链接消息  
         else if (msgType.equals(WeChatMessageUtil.REQ_MESSAGE_TYPE_LINK)) {  
             respContent = "欢迎加入口袋专享！";  
             respMessage = WeChatMessageUtil.initTextMessage(respContent, toUserName, fromUserName);
+            out.write(respMessage);
         }  
         // 音频消息  
         else if (msgType.equals(WeChatMessageUtil.REQ_MESSAGE_TYPE_VOICE)) {  
             respContent = "欢迎加入口袋专享！";  
             respMessage = WeChatMessageUtil.initTextMessage(respContent, toUserName, fromUserName);
+            out.write(respMessage);
         }  
         // 事件推送  
         else if (msgType.equals(WeChatMessageUtil.REQ_MESSAGE_TYPE_EVENT)) {  
@@ -342,6 +347,7 @@ public class WeiChatController {
                 	
                 }
                 respMessage = WeChatMessageUtil.initTextMessage(respContent, toUserName, fromUserName);
+                out.write(respMessage);
             }  
             // 取消订阅  
             else if (eventType.equals(WeChatMessageUtil.EVENT_TYPE_UNSUBSCRIBE)) {  
@@ -358,10 +364,12 @@ public class WeiChatController {
                 	if(userIfo.getYaoqingma() == null || userIfo.getYaoqingma().equals("")) {
                 		 respContent = "您还没有成为店长，无法生成个性化海报，请先成为店长！";  
                 		 respMessage = WeChatMessageUtil.initTextMessage(respContent, toUserName, fromUserName);
+                		 out.write(respMessage);
                 	}else {
                 		String mediaId = upload(getAccessToken().getAccessToken(),WeChatMessageUtil.REQ_MESSAGE_TYPE_IMAGE,fromUserName);
                 		logger.info("mediaId:"+mediaId);
                 		respMessage = WeChatMessageUtil.initImageMessage(mediaId, toUserName, fromUserName);
+                		out.write(respMessage);
 //                		String bigImg = "images/myshare.jpg";
 //                        String content1 = "邀请码:666666";
 //                        String outPath = "C:\\Users\\WuJiJin\\Desktop\\" + System.currentTimeMillis() + ".jpg";
@@ -371,15 +379,14 @@ public class WeiChatController {
 //获取永久素材                      	Get_ROREVER_MATERIAL_URL = Get_ROREVER_MATERIAL_URL.replace("ACCESS_TOKEN", getAccessToken().getAccessToken()).replace("MEDIA_ID", qrcode_Media_Id);
 //                	JSONObject JSONResult = WeixinUtil.httpRequest(Get_ROREVER_MATERIAL_URL, "GET", null);
                 	respMessage = WeChatMessageUtil.initImageMessage(qrcode_Media_Id, toUserName, fromUserName);
+                	out.write(respMessage);
                 }else {
                 	respContent = "敬请期待！";  
                 	respMessage = WeChatMessageUtil.initTextMessage(respContent, toUserName, fromUserName);
+                	out.write(respMessage);
                 }
             }  
         }  
-
-       
-        out.write(respMessage);
 		out.close();
     }
     
@@ -436,7 +443,7 @@ public class WeiChatController {
 		logger.info("----临时素材开始上传临时素材到微信获取mediaId----");
 		UserInfo userIfo = new UserInfo();
         userIfo = userInfoRepository.findByOpenid(openId);
-		String bigImg = "classes/static/images/myshare.png";
+		String bigImg = "classes/static/images/myshare.jpg";
         String content1 = "邀请码:"+userIfo.getYaoqingma();
         //String outPath = "C:\\Users\\WuJiJin\\Desktop\\" + System.currentTimeMillis() + ".jpg";
         BufferedImage bufferedImage = ImgUtil.bigImgAddSmallImgAndText(bigImg,content1, 145, 508);
